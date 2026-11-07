@@ -5,8 +5,10 @@
 
 ## 在线预览
 
-- Cloudflare Pages：`https://<project>.pages.dev`（部署后回填）
-- GitHub Pages：`https://sheen945.github.io/long-march-courseware/`
+- Cloudflare Pages：<https://long-march-courseware-bku.pages.dev>
+- GitHub Pages：<https://sheen945.github.io/long-march-courseware/>
+
+两站内容一致（94 文件 / 56.3 MB）。
 
 ## 目录
 
@@ -54,6 +56,11 @@ wrangler pages deploy dist --project-name=long-march-courseware
 3. `<base href>` 从租约路径改为 `./`；两段 4K 视频转 720p 以满足 Cloudflare Pages 25 MiB 单文件上限
 
 进度存档：原版走 `MessageChannel` 打到服务端（`revision` 冲突检测），本地版退化为内存态——刷新即回章节起点。
+
+另有两处工程性补齐：
+
+- `dist/404.html`：Cloudflare Pages 在没有 404 页时会把**缺失文件**当 SPA 回退成 `index.html`（200 + HTML），媒体加载失败会被静默吞掉；补 404 页后缺失资源恢复为真 404。
+- `sprites/red-army-flagbearer.webp`：原文件在抓取窗口内一直 403（租约到期后不可再取），本地用同尺寸的 `red-army-soldier.webp` 代替，页面因此零报错。
 
 ## 未包含
 
