@@ -61,13 +61,29 @@ wrangler pages deploy dist --project-name=long-march-courseware
 另有两处工程性补齐：
 
 - `dist/404.html`：Cloudflare Pages 在没有 404 页时会把**缺失文件**当 SPA 回退成 `index.html`（200 + HTML），媒体加载失败会被静默吞掉；补 404 页后缺失资源恢复为真 404。
-- `sprites/red-army-flagbearer.webp`：原文件在抓取窗口内一直 403（租约到期后不可再取），本地用同尺寸 `red-army-soldier.webp` 代替，页面因此零报错。
+- `sprites/red-army-flagbearer.webp`：早期抓取一直返回 403（实为平台限流），改用限速重试后拿到真件（926 KB）并已覆盖。
+
+## 二次对抗式补齐（2026-11-07 晚，新租约）
+
+第一次抓取把「平台限流」误读成了「付费门禁」：同一批请求并发 8 路以上时平台直接回 403/429，和真正的章节门禁返回码一模一样。限速（串行 0.5–1.2 s 间隔 + 429 退避）重试后补回 6 个文件：
+
+| 补回文件 | 大小 | 用途 |
+|---|---|---|
+| `scenes/ruijin/assets/scenes/yang-ancestral-hall-exterior-4k.webp` | 8.46 MB | 第 1 章转场 · 杨氏宗祠外景 4K |
+| `scenes/ruijin/assets/chapter3/background-fallback.webp` | 1.94 MB | 第 1 章转场 · 宗祠内景背景 |
+| `scenes/ruijin/assets/chapter3/planning-kling-20261025-pingpong.mp4` | 1.87 MB | 第 1 章转场 · 内景影片（2200×940，6.0 s） |
+| `scenes/ruijin/assets/chapter3/planning-video-poster.jpg` | 337 KB | 影片封面 |
+| `scenes/ruijin/assets/audio/ruijin_ambient.mp3` | 5.01 MB | 第 1 章环境音 |
+| `sprites/red-army-flagbearer.webp` | 926 KB | 旗手立绘真件 |
+
+补齐后第 1 章两条转场全部预载成功（`canvas.dataset.preloadedScenes = "yang-ancestral-hall-exterior,yang-ancestral-hall-interior"`），网络层零 4xx；「前往杨氏宗祠」热点仍显示 `locked`，这是**章节内任务进度锁**（需先探索完成本幕热点），与素材无关。
 
 ## 视频清单（本地实测可播放）
 
 | 文件 | 时长 | 用途 |
 |---|---|---|
 | `scenes/ruijin/assets/video/ruijin-village-4k.mp4` | 5.09 s（环形） | 第 1 章瑞金村庄全景背景 |
+| `scenes/ruijin/assets/chapter3/planning-kling-20261025-pingpong.mp4` | 6.0 s（2200×940） | 第 1 章宗祠内景 · 战略筹划转场影片 |
 | `scenes/yudu/assets/yudu/scene/scene1_woodshop.mp4` | 4.04 s | 第 2 章第一幕 · 于都街巷木匠铺 |
 | `scenes/yudu/assets/yudu/scene/scene3_river.mp4` | 3.07 s | 第 2 章第三幕 · 于都河渡口 |
 | `scenes/yudu/assets/yudu/movie_yudu_finale_short.mp4` | 25.0 s | 第 2 章片尾片 |
@@ -76,6 +92,8 @@ wrangler pages deploy dist --project-name=long-march-courseware
 
 ## 未包含
 
-第 3–9 章（湘江 / 遵义 / 赤水 / 金沙江 / 泸定 / 雪山草地 / 会师）素材在服务端按章节付费门禁，试用身份一律 403，客户端从未收到。详见 `REA-逆向报告.md` 第七节。
+第 3–9 章（湘江 / 遵义 / 赤水 / 金沙江 / 泸定 / 雪山草地 / 会师）素材在服务端按章节付费门禁，试用身份一律 403。本次已按 1.2 s 间隔串行重测 32 条付费路径（各章 `index.html`/`app.js`/地图 svg/档案 json 与 4 段音频），**全部 403，无一 200**——确认是真门禁，不是限流。详见 `REA-逆向报告.md` 第七节。
 
-第 1 章另有 3 个「代码引用了但服务端不给」的资源，导致「前往杨氏宗祠」这条转场点不进去：`assets/scenes/yang-ancestral-hall-exterior-4k.webp`、`assets/chapter3/planning-kling-20261025-pingpong.mp4`、`assets/audio/ruijin_ambient.mp3`。它们同为 403（与付费章节同一签名），试用身份拿不到。
+第 1 章原被误判为「服务端不给」的 4 个资源已补齐（见上表），第 1 章现已完整：瑞金村庄 4K 背景视频 + 杨氏宗祠外景/内景 + 内景影片 + 环境音。
+
+已确认真不存在（代码引用了但服务端确实没有，非门禁）：`assets/scenes/yang-ancestral-hall-interior-4k.webp`（内景实际用 `chapter3/background-fallback.webp`）、`scenes/yudu/assets/ruijin/archive_image_placeholder.jpg`、各章 `preview.jpg`/`preview.webp`、`courseware/classroom.html`、`courseware/response.json`。
