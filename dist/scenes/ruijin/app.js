@@ -2627,7 +2627,7 @@ async function bootstrap() {
     }
     if (sceneTransitions.size) {
       loading.querySelector("p").textContent = "正在预载后续场景……";
-      await Promise.all(Array.from(sceneTransitions.values(), transition => preloadSceneAssets(transition.target)));
+      await Promise.allSettled(Array.from(sceneTransitions.values(), transition => preloadSceneAssets(transition.target)));
     }
     restoreSavedScene();
     setupInteraction();
