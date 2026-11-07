@@ -75,8 +75,11 @@ wrangler pages deploy dist --project-name=long-march-courseware
 | `scenes/ruijin/assets/chapter3/planning-video-poster.jpg` | 337 KB | 影片封面 |
 | `scenes/ruijin/assets/audio/ruijin_ambient.mp3` | 5.01 MB | 第 1 章环境音 |
 | `sprites/red-army-flagbearer.webp` | 926 KB | 旗手立绘真件 |
+| `scenes/yudu/assets/yudu/archive/danger-before-departure.webp` | 164 KB | 于都档案「出发前的危险」 |
 
 补齐后第 1 章两条转场全部预载成功（`canvas.dataset.preloadedScenes = "yang-ancestral-hall-exterior,yang-ancestral-hall-interior"`），网络层零 4xx；「前往杨氏宗祠」热点仍显示 `locked`，这是**章节内任务进度锁**（需先探索完成本幕热点），与素材无关。
+
+另有 1 个上游从未发布的占位图 `scenes/yudu/assets/ruijin/archive_image_placeholder.jpg`（瑞金两条档案共用，四轮间隔重试始终 403）。本地生成了一张中性占位图（灰底 + `ARCHIVE IMAGE PLACEHOLDER` 字样，不含虚构史料），只为避免档案面板出现坏图。
 
 ## 视频清单（本地实测可播放）
 

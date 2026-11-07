@@ -162,8 +162,24 @@ src/components/FinalePlayer.js    → 片尾片（37 MB → 本地 3.6 MB）
 1. 购买该课程（¥88）或用会员账号，让服务端把 `accessType` 从 `trial` 改成正式授权；
 2. 用已购账号重新 `open` 一次，我再用同一套脚本抓一遍（脚本已就绪，`step24_crawl4.py` 会自动把新出现的路径补齐）。
 
-另外几处「代码引用了、服务端不给」的兜底资源（属发行残留，不是缺口）：
-`assets/scenes/yang-ancestral-hall-exterior-4k.webp`、`assets/chapter3/planning-kling-20261025-pingpong.mp4`、`assets/audio/ruijin_ambient.mp3`、`courseware/trial-portraits/e4b825443d99eb681446.webp`（试用身份头像）。
+另有一批「代码引用了、服务端不给」的兜底资源。**2026-11-07 晚用新租约做了对抗式复核后，结论要修正**：
+
+早期抓取把平台的**并发限流**误读成了「付费门禁」——同一批路径并发 8 路以上时平台回 403/429（返回体同样是 30 字节的 `text/html`，与真门禁完全同签名）。按 0.5–1.6 s 串行 + 429 退避重试后，以下文件全部 200 拿到，已补齐：
+
+| 路径 | 大小 | 内容 |
+|---|---|---|
+| `scenes/ruijin/assets/scenes/yang-ancestral-hall-exterior-4k.webp` | 8.46 MB | 杨氏宗祠外景 4K（第 1 章转场 1 目标） |
+| `scenes/ruijin/assets/chapter3/background-fallback.webp` | 1.94 MB | 宗祠内景背景（转场 2 目标） |
+| `scenes/ruijin/assets/chapter3/planning-kling-20261025-pingpong.mp4` | 1.87 MB | 内景影片 2200×940 / 6.0 s |
+| `scenes/ruijin/assets/chapter3/planning-video-poster.jpg` | 337 KB | 影片封面 |
+| `scenes/ruijin/assets/audio/ruijin_ambient.mp3` | 5.01 MB | 环境音 |
+| `scenes/ruijin/assets/video/ruijin-preview.webp`、`sprites/red-army-flagbearer.webp` | — | 预览图 / 旗手立绘真件 |
+| `courseware/trial-portraits/e4b825443d99eb681446.webp` | 23.8 KB | 试用身份头像 |
+| `scenes/yudu/assets/yudu/archive/danger-before-departure.webp` | 164 KB | 于都档案「出发前的危险」 |
+
+**付费章节判断不变**：第 3–9 章的 32 条路径（各章 `index.html`/`app.js`/`maps/*.svg`/`archives-*.json` + 4 段章节音频）在 1.2 s 串行间隔下**依旧全部 403、零 200**，确认是真门禁，不是限流。
+
+**确认服务端从未发布（非门禁）**：`scenes/yudu/assets/ruijin/archive_image_placeholder.jpg`（占位图名，四章档案共用，服务端始终 403）、`scenes/{ruijin,yudu,1..6}/preview.jpg|webp`、`courseware/classroom.html`、`courseware/response.json`、`sprites/red-army-{villager,messenger}.webp`。本地已于 `dist/scenes/yudu/assets/ruijin/archive_image_placeholder.jpg` 生成中性占位图（灰底 + `ARCHIVE IMAGE PLACEHOLDER` 字样，不含任何虚构史料），避免档案面板出现坏图。
 
 ---
 
@@ -244,3 +260,29 @@ Cloudflare Pages 单文件上限 25 MiB，两段 4K 视频（35.9 / 35.3 MB）�
 - **观察**：投递链、租约令牌、包装页桥、存档协议、地图节点与路线、素材清单、门禁返回码，全部有实测证据（`recon/` 与本文表格）。
 - **推断**：`long_march_private_v1` 是平台给「私有/高价课件」打的一个发行标签，前端按 `source_kind + id ∈ [498, 754]` 走专用播放流程；章节 scene 是**外部生产能力**（第 1 章街景式、第 2 章引擎式风格差异明显），所以每章各自带运行时，而不是共用一套。
 - **未知**：第 3–9 章的画面/交互具体长什么样（素材未下发，任何「我见过」的说法都不可信）；`archives-*.json` 里被锁的七章档案文本；`state` 存档服务端的键白名单具体条目（`config.keys` 在包装页里被压缩成变量，未展开）。
+
+
+---
+
+## 十二、对抗式审查（2026-11-07 夜 · 新租约三次 open 实测）
+
+审查问题只有一个：**跟原站比，还有什么是没弄到的？** 结论分四类：
+
+| 类别 | 条目 | 说明 |
+|---|---|---|
+| 已弄到且本地可跑 | 第 1 章瑞金全部、第 2 章于都全部、3D 地图、两章档案/对话/热点数据、授课模式、片尾片 | 本地 + CF + GH 三处实测 |
+| 路径纠正后才对得上的 | `scenes/*/assets/assets/*`、`scenes/yudu/data/assets/*`、`engine/data/*`、`assets/vendor/*` 等 40+ 条审计告警 | 都是「拿错基准目录」的假缺口，实际文件在上一层，disk 上都在 |
+| 真门禁（服务端不下发） | 第 3–9 章 32 条路径 | 1.2 s 串行重测全 403，零 200 |
+| 服务端从未发布 | `archive_image_placeholder.jpg`、各章 `preview.jpg`、`classroom.html`、`response.json`、`sprites/red-army-{villager,messenger}.webp` | 多次间隔重试仍 403；占位图本地已补中性版 |
+
+**关键修正**：早前把「并发限流 403」当成「付费门禁」，导致 6 个真素材被误判为拿不到。限速重试后全数到手，第 1 章转场由此完整。
+
+**补齐后的实测证据**
+
+- 本地 `http://127.0.0.1:8765/scenes/ruijin/`：`#panorama.dataset.preloadedScenes = "yang-ancestral-hall-exterior,yang-ancestral-hall-interior"`，主视频 `readyState=4 / paused=false / t=3.59`，内景影片 `readyState=4 / 2200×940 / 6.0 s / error=null`，网络层 **0 条 4xx**。
+- CF 新部署 `https://8c23d4d3.long-march-courseware-bku.pages.dev/scenes/ruijin/`：`preloaded` 两项齐全，主视频 `t=3.09` 在播，内景影片 `rs=4 / 2200×940`，`0` 条 4xx。
+- GH Pages 部署同样完成（`Deploy to GitHub Pages 1761735b completed success`），`scenes/ruijin/app.js` 已含补丁（`grep allSettled` 命中），新视频 HEAD `200 / 1865290 B`；但**从本机访问 github.io 当前被限速到约 28 KB/s**（582 KB 的 720p 主视频要下 20 秒），首屏会长时间停在「正在载入动态影像……」——这是网络环境问题，不是部署缺件。
+
+**「前往杨氏宗祠」热点仍显示 `locked`**：这是章节内任务锁（`road-hotspot locked` + `data-access="locked"`，控制台明确打印「尚未完成：博古、李德、周恩来」），与素材无关；素材已齐、预载已成功。
+
+**另一处只剩一个的缺口**：`courseware/classroom.html`（授课模式独立页面）从未下发，但主站 `courseware/classroom.js` 已落地，授课模式在 `scenes/*/index.html` 内可正常打开（章节列表 01–09 可见，3–9 章点击无内容属门禁缺件）。
