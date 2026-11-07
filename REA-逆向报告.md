@@ -215,6 +215,28 @@ D:\daima\rea-aifuneng\
 
 Cloudflare Pages 单文件上限 25 MiB，两段 4K 视频（35.9 / 35.3 MB）已用 ffmpeg 转 720p（→ 0.6 / 3.6 MB），其余保持原样。
 
+### 已上线
+
+| 站点 | 地址 | 状态 |
+|---|---|---|
+| Cloudflare Pages | <https://long-march-courseware-bku.pages.dev> | 96 文件，地图/瑞金/于都 三个入口 200，无致命报错 |
+| GitHub Pages | <https://sheen945.github.io/long-march-courseware/> | Actions `pages.yml` 自动发布 `dist/`，200 |
+| GitHub 仓库 | <https://github.com/sheen945/long-march-courseware> | 含报告、dist、tools |
+
+部署期补的两处工程细节：
+
+- **Cloudflare Pages 的 SPA 回退陷阱**：项目没有 `404.html` 时，缺失文件会被回退成 `index.html`（`200 text/html`），媒体 404 被静默吞掉——排查「线上没声音/没画面」时极易误判。补 404 页后恢复真 404，RS 缺失才看得见。
+- **`sprites/red-army-flagbearer.webp`**：bundle 里引用了但服务端始终 403；本地用同尺寸 `red-army-soldier.webp` 代替，页面零报错。
+
+### 线上复验（Chrome CDP 实测）
+
+| 页面 | 标题 | 致命错误 | 备注 |
+|---|---|---|---|
+| CF 地图 | 长征史实修订版 · 3D总览 | 无 | 10 节点 + 图例 + 开始导览齐全 |
+| CF 瑞金 | 瑞金村庄街景式沉浸章节 | 无 | 4 处 404 均为服务端未下发的兜底资源 |
+| CF 于都 | 在于都篇：长征第一渡 | 无 | 存档弹窗、字幕卡、顶栏均正常 |
+| GH 地图 | 长征史实修订版 · 3D总览 | 无 | 与 CF 同源
+
 ---
 
 ## 十一、结论（观察 / 推断 / 未知）
