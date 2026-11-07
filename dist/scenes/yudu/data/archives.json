@@ -1,0 +1,123 @@
+{
+  "archives": [
+    {
+      "id": "ruijin-fifth-campaign",
+      "chapter": "ruijin",
+      "type": "历史事件",
+      "name": "中央苏区",
+      "title": "第五次反“围剿”与战略转移",
+      "event": "1933年9月至1934年10月，第五次反“围剿”使中央苏区军事形势不断恶化。",
+      "content": "敌军采用碉堡推进等方式压缩中央苏区；红军在军事指挥上陷入被动，最终不得不实行战略转移。",
+      "artifact": "相关档案、旧址与历史照片由各级党史和纪念机构保存。",
+      "image": "assets/ruijin/archive_image_placeholder.jpg",
+      "sources": [
+        { "label": "中国共产党新闻网：《中国共产党大事记·1934年》", "url": "https://cpc.people.com.cn/GB/64162/64164/4415982.html" },
+        { "label": "人民网党史频道：《探访中央红军长征启程地——瑞金》", "url": "https://dangshi.people.com.cn/n1/2016/0823/c85037-28659252.html" }
+      ]
+    },
+    {
+      "id": "ruijin-yang-hall",
+      "chapter": "ruijin",
+      "type": "历史旧址",
+      "name": "杨氏宗厅（宗祠）",
+      "title": "瑞金沙洲坝杨氏宗厅",
+      "event": "中央机关迁驻沙洲坝后，多处客家宗祠成为党政机关办公和革命活动场所。",
+      "content": "瑞金沙洲坝的杨氏宗厅曾作为中央工农检察人民委员部的独立办公场所，是中央苏区政权建设的重要见证。",
+      "artifact": "现存旧址及其展陈记录了中央苏区时期的制度探索。",
+      "image": "assets/ruijin/archive_image_placeholder.jpg",
+      "sources": [
+        { "label": "最高人民检察院：《检察文物有话说｜工农检察部的独立办公场所》", "url": "https://www.spp.gov.cn/spp/zdgz/202405/t20240506_653462.shtml" }
+      ]
+    },
+    {
+      "id": "yudu-zeng-board",
+      "chapter": "yudu",
+      "type": "人物档案",
+      "name": "曾大爷（当地流传称谓）",
+      "title": "曾大爷捐寿材搭浮桥",
+      "event": "1934年10月，中央红军主力在于都集结并准备渡过于都河。当地群众捐出船只、门板、床板和木料，帮助架设浮桥。",
+      "content": "于都当地长期流传着一位姓曾的老人捐出门板、床板，后来又拆下为自己百年后准备的寿材木板支援架桥的故事。公开报道多以“曾大爷”或“姓曾的老大爷”称呼，因此档案不补写未经证实的姓名。",
+      "artifact": "中央红军长征出发纪念馆保存、陈列有见证渡河历史的门板、船篙、渔船等文物。",
+      "image": "assets/yudu/archive/zeng-board.webp",
+      "sources": [
+        { "label": "于都县人民政府：《于都人民真好》", "url": "https://www.yudu.gov.cn/yudu/ydrw/202104/bf7aae63e5a84a9e9fcc42d2d978e16b.shtml" },
+        { "label": "人民网党史频道：《长征第一渡：送别亲人 不忘来时路》", "url": "https://dangshi.people.com.cn/n1/2019/0617/c85037-31155872.html" }
+      ]
+    },
+    {
+      "id": "yudu-army-civilian-unity",
+      "chapter": "yudu",
+      "type": "历史事件",
+      "name": "于都军民",
+      "title": "军民鱼水情：长征出发前的群众支援",
+      "event": "1934年秋，中央红军主力在于都集结。当地群众帮助筹集粮食、草鞋、船只、门板和木料，并参与架桥、摆渡和掩护部队转移。",
+      "content": "长征出发前的准备并不只发生在军营。于都群众把能够拿出的物资送给红军，有人制作草鞋、筹集粮食，有人捐出门板和木料，还有船工冒险在夜间摆渡。普通群众的支持，成为红军秘密集结并渡过于都河的重要保障。",
+      "artifact": "中央红军长征出发纪念馆收藏、陈列的门板、船篙、渔船和草鞋等文物，见证了军民共同准备长征的历史。",
+      "image": "assets/yudu/archive/army-civilian-unity.webp",
+      "sources": [
+        { "label": "于都县人民政府：《于都人民真好》", "url": "https://www.yudu.gov.cn/yudu/ydrw/202104/bf7aae63e5a84a9e9fcc42d2d978e16b.shtml" },
+        { "label": "于都县人民政府：《于都河畔：万里长征从这里出发》", "url": "https://www.yudu.gov.cn/yudu/ydrw/202102/3f856d547c974b18afb023350581f9b0.shtml" }
+      ]
+    },
+    {
+      "id": "yudu-li-shengren",
+      "chapter": "yudu",
+      "type": "人物档案",
+      "name": "李声仁",
+      "title": "李声仁帮助红军渡河",
+      "event": "1934年10月16日前后，李声仁等渔民在于都河捕鱼时接受红军请求，夜间驾船帮助部队渡河。",
+      "content": "于都河水面宽阔、水流湍急，夜间行船危险。公开史料记载，李声仁与妻子同撑一条渔船，他的父母等家人也参与运送；几天后，他们又帮助一批红军渡河。",
+      "artifact": "李声仁捐赠的渔船收藏于中央红军长征出发纪念馆，是当地群众支援红军渡河的实物见证。",
+      "image": "assets/yudu/archive/li-shengren.png",
+      "sources": [
+        { "label": "人民网党史频道：《长征第一渡：送别亲人 不忘来时路》", "url": "https://dangshi.people.com.cn/n1/2019/0617/c85037-31155872.html" },
+        { "label": "人民网党史频道：《后来才知，那次出发叫“长征”》", "url": "https://dangshi.people.com.cn/n1/2016/0927/c85037-28742971.html" }
+      ]
+    },
+    {
+      "id": "yudu-danger-before-departure",
+      "chapter": "yudu",
+      "type": "历史事件",
+      "name": "中央红军",
+      "title": "长征出发前的危险处境",
+      "event": "第五次反“围剿”失利后，中央红军面临严密封锁与围追堵截，需要隐蔽完成集结和转移。",
+      "content": "为避免敌机侦察和暴露大规模转移意图，浮桥在傍晚搭设，红军在夜间渡河，次日凌晨再拆除；这一过程连续多日重复。",
+      "artifact": "纪念馆以场景复原和文物展陈表现夜间搭桥、渡河以及群众严守秘密的历史。",
+      "image": "assets/yudu/archive/danger-before-departure.webp",
+      "sources": [
+        { "label": "最高人民检察院：《那些在“长征第一渡口”发生的故事》", "url": "https://www.spp.gov.cn/spp/dsxxjy/202106/t20210608_530266.shtml" },
+        { "label": "赣州市人民政府：《长虹卧波听风吟——凝望于都河上五座桥》", "url": "https://www.ganzhou.gov.cn/gzszf/c100022/202412/e9528afe2ef245d1af35e25155ef1148.shtml" }
+      ]
+    },
+    {
+      "id": "yudu-xie-zhijian-sandals",
+      "chapter": "yudu",
+      "type": "人物档案",
+      "name": "谢志坚、黄春秀",
+      "title": "谢志坚与一双草鞋",
+      "event": "1934年中央红军从于都出发前，谢志坚的未婚妻黄春秀为他编织草鞋。谢志坚带着草鞋参加长征。",
+      "content": "谢志坚珍藏这双草鞋，公开资料记载他在渡金沙江、渡大渡河时曾穿过。新中国成立后，他回于都寻找春秀，得知她已牺牲。这个故事不仅关乎爱情，也折射出革命年代无数普通人为理想舍弃个人团圆。",
+      "artifact": "绣球草鞋长26厘米、宽8.5厘米，以黄麻编织。20世纪80年代，谢志坚将它捐赠给中央红军长征出发纪念馆。",
+      "image": "assets/yudu/archive/xie-zhijian-sandals.jpg",
+      "sources": [
+        { "label": "于都县人民政府：《红色于都｜一双绣球草鞋》", "url": "https://www.yudu.gov.cn/yudu/ydrw/202407/5145dce6d37c4875a07fa364de8e6c5f.shtml" },
+        { "label": "中央网信办：《不忘初心，长征永远在路上》", "url": "https://www.cac.gov.cn/2019-06/14/c_1124624482.htm" }
+      ]
+    },
+    {
+      "id": "yudu-first-crossing",
+      "chapter": "yudu",
+      "type": "历史事件",
+      "name": "长征第一渡",
+      "title": "中央红军夜渡于都河",
+      "event": "1934年10月17日至20日（部分权威报道表述至21日拂晓），中央红军主力约8.6万人从于都河多个渡口渡河，踏上战略转移征程。",
+      "content": "于都河当时没有大桥。群众筹集大小船只、门板和木料，军民共同搭设浮桥、摆渡或涉水过河。为隐蔽转移意图，部队主要在夜色中渡河。",
+      "artifact": "门板、船篙、渔船等文物以及《野战军南渡贡水计划表》等资料，共同见证了长征出发的组织与群众支援。",
+      "image": "assets/yudu/archive/first-crossing.webp",
+      "sources": [
+        { "label": "于都县人民政府：《于都河畔：万里长征从这里出发》", "url": "https://www.yudu.gov.cn/yudu/ydrw/202102/3f856d547c974b18afb023350581f9b0.shtml" },
+        { "label": "最高人民检察院：《那些在“长征第一渡口”发生的故事》", "url": "https://www.spp.gov.cn/spp/dsxxjy/202106/t20210608_530266.shtml" }
+      ]
+    }
+  ]
+}

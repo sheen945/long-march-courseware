@@ -1,0 +1,290 @@
+:root {
+  --lm-unified-topbar-top: max(4px, env(safe-area-inset-top));
+  --lm-unified-topbar-height: 48px;
+  --lm-unified-topbar-bg: rgba(12, 10, 8, .66);
+  --lm-unified-topbar-border: rgba(226, 195, 139, .34);
+  --lm-unified-topbar-border-strong: rgba(226, 195, 139, .58);
+  --lm-unified-topbar-text: #f4ead8;
+  --lm-unified-topbar-soft: #d7c7a8;
+  --lm-unified-topbar-gold: #c79d5a;
+}
+
+.long-march-volume,
+#chapterNav,
+#archiveLibraryButton,
+#resetButton,
+#resetChapterButton,
+#soundToggle,
+#audioButton,
+#soundButton,
+#volumeButton,
+#backButton,
+#settingsButton,
+#infoButton,
+#motionButton,
+#restartButton,
+.chapter-toolbar,
+#toolbar,
+body.lm-unified-topbar-ready .long-march-volume,
+body.lm-unified-topbar-ready #chapterNav,
+body.lm-unified-topbar-ready #archiveLibraryButton,
+body.lm-unified-topbar-ready #resetButton,
+body.lm-unified-topbar-ready #resetChapterButton,
+body.lm-unified-topbar-ready #soundToggle,
+body.lm-unified-topbar-ready #audioButton,
+body.lm-unified-topbar-ready #soundButton,
+body.lm-unified-topbar-ready #volumeButton,
+body.lm-unified-topbar-ready #backButton,
+body.lm-unified-topbar-ready #settingsButton,
+body.lm-unified-topbar-ready #infoButton,
+body.lm-unified-topbar-ready #motionButton,
+body.lm-unified-topbar-ready #restartButton,
+body.lm-unified-topbar-ready .chapter-toolbar,
+body.lm-unified-topbar-ready #toolbar {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+}
+
+.lm-unified-topbar {
+  position: fixed;
+  z-index: 2147483000;
+  top: var(--lm-unified-topbar-top);
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: var(--lm-unified-topbar-height);
+  padding: 5px;
+  border: 1px solid var(--lm-unified-topbar-border);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,0)),
+    var(--lm-unified-topbar-bg);
+  color: var(--lm-unified-topbar-text);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .25);
+  backdrop-filter: blur(10px) saturate(112%);
+  -webkit-backdrop-filter: blur(10px) saturate(112%);
+  transform: translateX(-50%);
+  pointer-events: auto;
+  user-select: none;
+}
+
+.lm-unified-topbar::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255, 255, 255, .045);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.lm-unified-topbar__volume {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 166px;
+  height: 38px;
+  padding: 0 11px 0 8px;
+  border: 1px solid rgba(226, 195, 139, .18);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .18);
+}
+
+.lm-unified-topbar__button {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  padding: 0;
+  border: 1px solid rgba(226, 195, 139, .24);
+  border-radius: 999px;
+  color: var(--lm-unified-topbar-text);
+  background: rgba(22, 18, 14, .66);
+  cursor: pointer;
+  font: 600 15px/1 "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
+  letter-spacing: .03em;
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.lm-unified-topbar__button:hover {
+  transform: translateY(-1px);
+  border-color: var(--lm-unified-topbar-border-strong);
+  background: rgba(44, 34, 24, .78);
+  color: #fff8e8;
+}
+
+.lm-unified-topbar__button:active {
+  transform: translateY(0) scale(.985);
+}
+
+.lm-unified-topbar__button:disabled { opacity: .55; cursor: default; }
+.lm-unified-topbar__status {
+  position: absolute; top: calc(100% + 10px); right: 0;
+  max-width: min(300px, 80vw); padding: 9px 14px;
+  border: 1px solid var(--lm-unified-topbar-border); border-radius: 10px;
+  background: rgba(12, 10, 8, .94); color: var(--lm-unified-topbar-text);
+  font: 13px/1.6 "Microsoft YaHei", sans-serif;
+}
+.lm-unified-topbar__status[hidden] { display: none; }
+
+.lm-unified-topbar__button:focus-visible,
+.lm-unified-topbar__slider:focus-visible {
+  outline: 2px solid rgba(223, 196, 140, .72);
+  outline-offset: 3px;
+}
+
+.lm-unified-topbar__button svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.lm-unified-topbar__label {
+  display: none;
+}
+
+.lm-unified-topbar__slider {
+  width: 96px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--lm-unified-topbar-gold);
+  cursor: pointer;
+}
+
+.lm-unified-topbar__value {
+  min-width: 32px;
+  color: var(--lm-unified-topbar-soft);
+  font: 600 11px/1 "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
+  text-align: right;
+  letter-spacing: .03em;
+}
+
+.lm-unified-topbar__tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  padding: 5px 8px;
+  border: 1px solid rgba(226, 195, 139, .25);
+  border-radius: 999px;
+  background: rgba(7, 6, 5, .84);
+  color: var(--lm-unified-topbar-soft);
+  font: 500 11px/1 "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
+  letter-spacing: .08em;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transform: translate(-50%, -3px);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.lm-unified-topbar__button:hover .lm-unified-topbar__tooltip,
+.lm-unified-topbar__button:focus-visible .lm-unified-topbar__tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.lm-unified-topbar__button[data-muted="true"] {
+  color: #a99a7e;
+}
+
+.lm-unified-topbar__button[aria-pressed="true"]:not(.lm-unified-topbar__button--volume){background:#71392c;border-color:#d6b075;color:#fff3d7}
+body.lm-scene-frame-open>.lm-unified-topbar{display:none}
+
+.lm-unified-topbar__button[data-muted="true"]::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 1px;
+  background: rgba(214, 97, 79, .82);
+  transform: rotate(-38deg);
+}
+
+@media (max-width: 720px) {
+  .lm-unified-topbar {
+    width: min(calc(100vw - 24px), 368px);
+    height: 44px;
+    gap: 5px;
+    padding: 4px;
+  }
+
+  .lm-unified-topbar__volume {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 36px;
+    padding-right: 8px;
+  }
+
+  .lm-unified-topbar__button {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .lm-unified-topbar__slider {
+    flex: 1 1 70px;
+    min-width: 0;
+    width: 70px;
+  }
+
+  .lm-unified-topbar__value {
+    min-width: 28px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .lm-unified-topbar__value { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lm-unified-topbar,
+  .lm-unified-topbar * {
+    transition: none !important;
+  }
+}
+
+/* Zunyi and Dadu River use wide captions: keep them below the shared controls. */
+body.lm-topbar-pinned .scene-caption {
+  top: calc(var(--lm-unified-topbar-top) + var(--lm-unified-topbar-height) + 14px);
+}
+
+.lm-reset-confirm {
+  max-width: min(420px, calc(100vw - 48px)); padding: 26px;
+  border: 1px solid rgba(226,195,139,.58); border-radius: 16px;
+  color: #f4ead8; background: #211b14; box-shadow: 0 16px 60px #0009;
+  font: 16px/1.65 system-ui, sans-serif;
+}
+.lm-reset-confirm::backdrop { background: rgba(8,6,4,.62); }
+.lm-reset-confirm h2 { margin: 0 0 12px; font-size: 21px; }
+.lm-reset-confirm p { margin: 0 0 22px; color: #d7c7a8; }
+.lm-reset-confirm > div { display: flex; justify-content: flex-end; gap: 12px; }
+.lm-reset-confirm button {
+  padding: 9px 20px; border: 1px solid #99835e; border-radius: 8px;
+  color: #f4ead8; background: #332a1f; font: inherit; cursor: pointer;
+}
+.lm-reset-confirm button:focus-visible { outline: 2px solid #e3c78c; outline-offset: 3px; }
+.lm-reset-confirm .lm-reset-confirm__accept { background: #8c4a32; }
+
+body.lm-topbar-pinned .chapter-progress,
+body.lm-topbar-pinned .act-progress {
+  top: calc(var(--lm-caption-bottom, 128px) + 8px);
+}

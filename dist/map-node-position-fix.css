@@ -1,0 +1,5 @@
+/*
+ * Ruijin and Yudu use the same marker styles as every other map node.
+ * Their temporary collision margins are calculated from the live projected
+ * coordinates in map-node-position-fix.js.
+ */

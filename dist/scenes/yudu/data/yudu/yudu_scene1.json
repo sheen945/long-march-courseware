@@ -1,0 +1,48 @@
+{
+  "id": "yudu-woodshop",
+  "title": "于都街巷 · 最后的准备",
+  "progressTitle": "于都街巷 · 最后的准备",
+  "caption": "第一幕 · 于都街巷 · 最后的准备",
+  "initialYawDegrees": -45,
+  "video": {
+    "source": "assets/yudu/scene/scene1_woodshop.mp4",
+    "loop": true,
+    "muted": false
+  },
+  "audio": {
+    "music": { "volume": 0.13 },
+    "ambience": null,
+    "video": { "enabled": true, "volume": 0.42 }
+  },
+  "requiredHotspots": ["yudu-zeng"],
+  "entryNotice": "沿街查看，先听曾大爷讲讲这些木板。",
+  "hotspots": [
+    {
+      "id": "yudu-zeng",
+      "kind": "npc",
+      "name": "曾大爷",
+      "label": "曾大爷：木板的故事",
+      "dialogue": "dialogue-zeng",
+      "archive": "yudu-zeng-board",
+      "bounds": { "left": 0.34, "right": 0.46, "top": 0.42, "bottom": 0.83 }
+    },
+    {
+      "id": "yudu-soldiers",
+      "kind": "npc",
+      "name": "红军战士",
+      "label": "红军战士：出发前的准备",
+      "dialogue": "dialogue-yudu-soldiers",
+      "archive": "yudu-army-civilian-unity",
+      "bounds": { "left": 0.77, "right": 0.92, "top": 0.42, "bottom": 0.78 }
+    },
+    {
+      "id": "residence-door",
+      "kind": "continue",
+      "name": "右侧民居",
+      "label": "进入民居：草鞋故事",
+      "targetScene": "yudu-sandals",
+      "requires": ["yudu-zeng"],
+      "bounds": { "left": 0.925, "right": 0.99, "top": 0.4, "bottom": 0.72 }
+    }
+  ]
+}

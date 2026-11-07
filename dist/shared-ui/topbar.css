@@ -1,0 +1,317 @@
+/*
+ * Long March shared topbar skin — Phase 2A
+ * Scope: common utility controls only. This file deliberately avoids
+ * taking over chapter state, navigation, audio, or HUD layout logic.
+ */
+
+.ui-topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--lm-topbar-gap, 8px);
+}
+
+.ui-control {
+  --ui-control-size: var(--lm-topbar-button, 42px);
+
+  display: inline-grid;
+  place-items: center;
+  width: var(--ui-control-size);
+  height: var(--ui-control-size);
+  min-width: var(--ui-control-size);
+  min-height: var(--ui-control-size);
+  padding: 0;
+  border: var(--lm-border-hairline, 1px solid rgba(226, 195, 139, .36));
+  border-radius: var(--lm-radius-control, 999px);
+  background: rgba(15, 13, 10, .68);
+  color: var(--lm-color-text, #f4ead8);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .2);
+  backdrop-filter: blur(8px) saturate(115%);
+  -webkit-backdrop-filter: blur(8px) saturate(115%);
+  cursor: pointer;
+  font: 600 16px / 1 var(--lm-font-ui, "Microsoft YaHei UI", sans-serif);
+  letter-spacing: .02em;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  transition:
+    transform var(--lm-motion-fast, 160ms) ease,
+    background-color var(--lm-motion-fast, 160ms) ease,
+    border-color var(--lm-motion-fast, 160ms) ease,
+    color var(--lm-motion-fast, 160ms) ease,
+    opacity var(--lm-motion-fast, 160ms) ease,
+    box-shadow var(--lm-motion-fast, 160ms) ease;
+}
+
+.ui-control:hover {
+  transform: translateY(-1px) scale(1.035);
+  border-color: var(--lm-color-border-strong, rgba(226, 195, 139, .62));
+  background: rgba(29, 24, 18, .78);
+  color: #fff7e6;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .28);
+}
+
+.ui-control:active {
+  transform: translateY(0) scale(.985);
+}
+
+.ui-control:focus-visible {
+  outline: 2px solid rgba(223, 196, 140, .74);
+  outline-offset: 3px;
+}
+
+.ui-control[disabled],
+.ui-control[aria-disabled="true"] {
+  cursor: default;
+  opacity: .5;
+  transform: none;
+}
+
+.ui-control[data-ui-tooltip]::after {
+  content: attr(data-ui-tooltip);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: calc(var(--lm-layer-toolbar, 52) + 2);
+  min-width: max-content;
+  max-width: 120px;
+  padding: 5px 8px;
+  border: 1px solid rgba(226, 195, 139, .28);
+  border-radius: 999px;
+  background: rgba(8, 7, 6, .82);
+  color: var(--lm-color-text-soft, #d7c7a8);
+  font: 500 11px / 1.1 var(--lm-font-ui, "Microsoft YaHei UI", sans-serif);
+  letter-spacing: .06em;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -3px);
+  transition:
+    opacity var(--lm-motion-fast, 160ms) ease,
+    transform var(--lm-motion-fast, 160ms) ease;
+  white-space: nowrap;
+}
+
+.ui-control[data-ui-tooltip]:hover::after,
+.ui-control[data-ui-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.ui-control small,
+.ui-control .toolbar-label,
+.ui-control .control-label {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  min-width: max-content;
+  padding: 5px 8px;
+  border: 1px solid rgba(226, 195, 139, .28);
+  border-radius: 999px;
+  background: rgba(8, 7, 6, .82);
+  color: var(--lm-color-text-soft, #d7c7a8);
+  font: 500 11px / 1.1 var(--lm-font-ui, "Microsoft YaHei UI", sans-serif);
+  letter-spacing: .06em;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -3px);
+  transition:
+    opacity var(--lm-motion-fast, 160ms) ease,
+    transform var(--lm-motion-fast, 160ms) ease;
+  white-space: nowrap;
+}
+
+.ui-control:hover small,
+.ui-control:focus-visible small,
+.ui-control:hover .toolbar-label,
+.ui-control:focus-visible .toolbar-label,
+.ui-control:hover .control-label,
+.ui-control:focus-visible .control-label {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.ui-control--map .map-button-text,
+.ui-control--map .visually-tooltip {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.ui-control--map .map-button-mark {
+  display: grid;
+  place-items: center;
+  width: auto;
+  height: auto;
+  margin: 0;
+  font: 600 18px / 1 var(--lm-font-title, "STKaiti", "KaiTi", serif);
+}
+
+.ui-control--panel {
+  position: relative;
+  width: auto;
+  height: 36px;
+  min-width: 0;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.chapter-progress .ui-control--panel {
+  width: calc(100% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.ui-control--finale {
+  position: relative;
+  width: auto;
+  height: 38px;
+  min-width: 0;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 2px;
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  text-transform: none;
+}
+
+.chapter-tools .ui-control--panel {
+  width: calc(100% - 16px);
+  margin: 8px 8px 0;
+  border: var(--lm-border-hairline, 1px solid rgba(226, 195, 139, .36));
+  border-radius: 999px;
+  background: rgba(15, 13, 10, .58);
+  color: var(--lm-color-text-soft, #d7c7a8);
+  text-align: center;
+}
+
+.chapter-tools .ui-control--panel:last-child {
+  margin-bottom: 8px;
+  border: var(--lm-border-hairline, 1px solid rgba(226, 195, 139, .36));
+  color: var(--lm-color-text-soft, #d7c7a8);
+}
+
+.chapter-tools .ui-control--panel:hover,
+.chapter-tools .ui-control--panel:focus-visible {
+  border-color: var(--lm-color-border-strong, rgba(226, 195, 139, .62));
+  background: rgba(29, 24, 18, .76);
+  color: #fff7e6;
+  outline: 2px solid rgba(223, 196, 140, .28);
+  outline-offset: 2px;
+}
+
+.chapter-tools .ui-control--finale {
+  border-color: var(--lm-color-border, rgba(226, 195, 139, .38));
+  background: rgba(10, 9, 7, .54);
+  color: rgba(244, 234, 216, .82);
+}
+
+.chapter-tools .ui-control--finale:hover,
+.ui-control--finale:hover {
+  transform: translateY(-1px);
+  border-color: var(--lm-color-border-strong, rgba(226, 195, 139, .62));
+  background: rgba(29, 24, 18, .76);
+  color: #fff7e6;
+}
+
+.ui-control--compact {
+  --ui-control-size: 38px;
+}
+
+.long-march-volume {
+  border-color: var(--lm-color-border, rgba(226, 195, 139, .38));
+  background: rgba(10, 9, 7, .68);
+  color: var(--lm-color-text, #f4ead8);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .22);
+  backdrop-filter: blur(8px) saturate(115%);
+  -webkit-backdrop-filter: blur(8px) saturate(115%);
+}
+
+.long-march-volume:hover {
+  border-color: var(--lm-color-border-strong, rgba(226, 195, 139, .62));
+  background: rgba(25, 21, 16, .78);
+}
+
+.long-march-volume__toggle:focus-visible,
+.long-march-volume__slider:focus-visible {
+  outline: 2px solid rgba(223, 196, 140, .74);
+  outline-offset: 2px;
+}
+
+/*
+ * Exploration hint family
+ * Keep every panoramic chapter on the Snowgrass first-act baseline:
+ * quiet text, no card chrome, and the same low-contrast gold emphasis.
+ * Chapter scripts still own whether the hint is shown for a scene.
+ */
+.controls-hint {
+  position: fixed !important;
+  left: 50% !important;
+  bottom: 22px !important;
+  z-index: var(--lm-layer-progress, 25) !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: rgba(239, 228, 206, .72) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: translateX(-50%);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  font: 11px/1.2 system-ui, sans-serif !important;
+  letter-spacing: .07em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.controls-hint b {
+  color: #f0dfbd !important;
+  font-weight: 500 !important;
+}
+
+.controls-hint i {
+  width: 2px !important;
+  height: 2px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #c3ac7b !important;
+}
+
+@media (max-width: 720px) {
+  .ui-control {
+    --ui-control-size: var(--lm-topbar-button-mobile, 36px);
+    font-size: 14px;
+  }
+
+  .ui-topbar {
+    gap: 6px;
+  }
+
+  .ui-control--panel {
+    height: 34px;
+    min-height: 34px;
+    padding-inline: 12px;
+    font-size: 12px;
+  }
+
+  .controls-hint {
+    bottom: 18px !important;
+    gap: 8px;
+    font-size: 11px !important;
+    letter-spacing: .05em;
+  }
+}

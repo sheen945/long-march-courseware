@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><script data-long-march-memory-storage>
+(function(){function createMemoryStorage(){var values=Object.create(null),keys=[];return{get length(){return keys.length;},key:function(i){i=Number(i);return Number.isInteger(i)&&i>=0&&i<keys.length?keys[i]:null;},getItem:function(k){k=String(k);return Object.prototype.hasOwnProperty.call(values,k)?values[k]:null;},setItem:function(k,v){k=String(k);if(!Object.prototype.hasOwnProperty.call(values,k))keys.push(k);values[k]=String(v);},removeItem:function(k){k=String(k);if(!Object.prototype.hasOwnProperty.call(values,k))return;delete values[k];keys=keys.filter(function(x){return x!==k;});},clear:function(){values=Object.create(null);keys=[];}};}function install(name){try{var current=window[name];void current.length;return;}catch(e){}try{Object.defineProperty(window,name,{configurable:true,enumerable:true,value:createMemoryStorage()});}catch(e){}}install("localStorage");install("sessionStorage");})();
+</script><script>
+(function(){var prefixes=["/api/program-assets/754/"];function needsCors(v){if(!v||typeof v!=="string")return false;try{var href=new URL(v,document.baseURI).href;for(var i=0;i<prefixes.length;i++){var p=new URL(prefixes[i],location.origin).href;if(href.indexOf(p)===0)return true;}return false;}catch(e){return false;}}function mark(img,v){if(needsCors(v)){try{img.crossOrigin="anonymous";}catch(e){}}}var d=Object.getOwnPropertyDescriptor(HTMLImageElement.prototype,"src");if(d&&d.set&&d.get){try{Object.defineProperty(HTMLImageElement.prototype,"src",{get:d.get,set:function(v){mark(this,v);return d.set.call(this,v);},configurable:true,enumerable:d.enumerable});}catch(e){}}var set=Element.prototype.setAttribute;Element.prototype.setAttribute=function(n,v){if(this instanceof HTMLImageElement&&String(n).toLowerCase()==="src")mark(this,String(v||""));return set.apply(this,arguments);};})();
+</script><base href="./">
+<script src="../../courseware/website-bridge.js"></script>
+<script src="../../courseware/runtime.js"></script>
+<link rel="stylesheet" href="../../courseware/classroom.css">
+<script defer src="../../courseware/classroom.js"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#17150f">
+  <title>瑞金村庄街景式沉浸章节</title>
+  <link rel="stylesheet" href="../../shared-audio.css">
+  <script src="../../shared-audio.js"></script>
+  <link rel="stylesheet" href="../../shared-ui/ui-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../../shared-ui/topbar.css">
+<link rel="stylesheet" href="../../shared-ui/unified-topbar.css?v=20260829-maprestore">
+  <link rel="stylesheet" href="../../shared-ui/chapter-titlecard.css">
+<script src="../../shared-ui/unified-topbar.js?v=20260829-maprestore" defer></script>
+  <script src="../../shared-ui/chapter-titlecard.js" defer></script>
+</head>
+<body class="lm-titlecard-pending"><script>/*[REA] 平台锁与授权校验已移除，可本地运行*/</script>
+  <main id="viewport" aria-label="1934年瑞金沙洲坝村庄弧形街景">
+    <div id="scene" class="scene">
+      <canvas id="panorama" aria-label="可拖动观察的瑞金村庄弧形全景"></canvas>
+      <div class="sun-haze" aria-hidden="true"></div>
+      <div id="leaves" class="leaves-layer" aria-hidden="true"></div>
+
+      <button id="villagerHotspot" class="villager-hotspot" type="button" aria-label="听听村民在说什么">
+        <span class="hotspot-outline" aria-hidden="true"></span>
+        <span class="talk-prompt">与村民交谈</span>
+      </button>
+
+      <button id="soldierHotspot" class="soldier-hotspot" type="button" data-hotspot-key="redArmySoldierLeft" aria-label="与左侧红军战士交谈">
+        <span class="hotspot-outline" aria-hidden="true"></span>
+        <span class="talk-prompt">交谈</span>
+      </button>
+
+      <button id="soldierHotspotSecondary" class="soldier-hotspot soldier-hotspot-secondary" type="button" data-hotspot-key="redArmySoldierRight" aria-label="与右侧红军战士交谈">
+        <span class="hotspot-outline" aria-hidden="true"></span>
+        <span class="talk-prompt">交谈</span>
+      </button>
+
+      <button id="roadHotspot" class="road-hotspot" type="button" aria-label="沿道路前往杨氏宗祠">
+        <span class="road-glow" aria-hidden="true"></span>
+        <span class="road-click-ripple" aria-hidden="true"></span>
+        <span class="road-prompt">前往杨氏宗祠</span>
+      </button>
+
+      <button id="messengerHotspot" class="messenger-hotspot" type="button" aria-label="与通信员交谈">
+        <span class="hotspot-outline" aria-hidden="true"></span>
+        <span class="talk-prompt">与通信员交谈</span>
+      </button>
+
+      <button id="doorHotspot" class="door-hotspot" type="button" aria-label="进入杨氏宗祠">
+        <span class="door-glow" aria-hidden="true"></span>
+        <span class="door-click-ripple" aria-hidden="true"></span>
+        <span class="door-prompt">进入宗祠</span>
+      </button>
+
+      <div id="meetingCharacterHotspots" class="meeting-character-hotspots" aria-label="转移筹划参会人物">
+        <button class="meeting-character-hotspot" type="button" data-character-id="bo-gu" aria-label="了解博古">
+          <span class="character-name-prompt">与博古交谈</span><i class="character-seen-mark" aria-hidden="true">✓</i>
+        </button>
+        <button class="meeting-character-hotspot" type="button" data-character-id="li-de" aria-label="了解李德">
+          <span class="character-name-prompt">与李德交谈</span><i class="character-seen-mark" aria-hidden="true">✓</i>
+        </button>
+        <button class="meeting-character-hotspot" type="button" data-character-id="zhou-enlai" aria-label="了解周恩来">
+          <span class="character-name-prompt">与周恩来交谈</span><i class="character-seen-mark" aria-hidden="true">✓</i>
+        </button>
+      </div>
+    </div>
+
+    <div class="cinematic-grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="scene-caption">
+      <p>1934 · 江西瑞金</p>
+      <h1>沙洲坝 · 下霄村</h1>
+    </header>
+
+    <section id="chapterProgress" class="chapter-progress" aria-label="第一章瑞金学习进度">
+      <button id="chapterProgressToggle" class="chapter-progress-toggle" type="button" aria-expanded="false" aria-controls="chapterProgressList">
+        <span>第一章·瑞金</span>
+        <strong id="chapterProgressCount">探索 0/4</strong>
+        <i aria-hidden="true"></i>
+      </button>
+      <ul id="chapterProgressList" class="chapter-progress-list" aria-hidden="true">
+        <li data-progress-key="village"><span aria-hidden="true">✓</span>村庄见闻</li>
+        <li data-progress-key="meeting"><span aria-hidden="true">✓</span><div>转移筹划<small id="meetingCharacterProgress">会议人物 <b id="meetingCharacterCount">0/3</b></small></div></li>
+        <li data-progress-key="strategy"><span aria-hidden="true">✓</span>战略决策</li>
+        <li data-progress-key="diary"><span aria-hidden="true">✓</span>长征日记</li>
+      </ul>
+      <button id="resetChapterButton" class="reset-chapter-button ui-control ui-control--panel" type="button" title="重置本章" data-ui-tooltip="重置本章">重置本章</button>
+    </section>
+
+    <div id="sceneNotice" class="scene-notice" role="status" aria-live="polite"></div>
+
+    <button id="meetingSummaryButton" class="meeting-summary-button" type="button" aria-label="查看背景梳理">
+      <span aria-hidden="true">纪</span><strong>背景梳理</strong><i class="meeting-summary-check" aria-hidden="true">✓</i>
+    </button>
+    <button id="strategicDecisionButton" class="strategic-decision-button" type="button" aria-label="参与最后决策">
+      <span class="strategic-decision-rule" aria-hidden="true"></span>
+      <strong id="strategicDecisionLabel">参与最后决策</strong>
+      <span class="strategic-decision-rule" aria-hidden="true"></span>
+    </button>
+
+    <section id="controlsHint" class="controls-hint" aria-label="操作说明">
+      <span><b>按住拖动</b> 转动视角</span><i></i><span><b>发光热点</b> 探索</span>
+    </section>
+
+    <div id="loading" class="loading" role="status">
+      <span></span>
+      <p>正在进入瑞金村庄……</p>
+    </div>
+
+    <section id="resumeChoice" class="resume-choice" role="dialog" aria-modal="true" aria-labelledby="resumeChoiceTitle" aria-hidden="true">
+      <div class="resume-choice-backdrop" aria-hidden="true"></div>
+      <article class="resume-choice-panel">
+        <p class="resume-choice-eyebrow">第一章 · 瑞金</p>
+        <h2 id="resumeChoiceTitle">发现上次学习记录</h2>
+        <p class="resume-choice-text">可以接着上次的场景与任务继续，也可以清空本章记录，从瑞金村庄重新开始。</p>
+        <div class="resume-choice-actions">
+          <button id="resumeChapterButton" class="resume-choice-button primary" type="button">继续上次</button>
+          <button id="restartChapterButton" class="resume-choice-button" type="button">重新开始</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="chapterNarration" class="chapter-narration" aria-live="polite" aria-hidden="true">
+      <div class="chapter-narration-shade" aria-hidden="true"></div>
+      <div id="chapterNarrationLines" class="chapter-narration-lines"></div>
+      <button id="skipNarration" class="skip-narration" type="button" hidden>跳过</button>
+    </section>
+
+    <section id="dialogue" class="dialogue" role="dialog" aria-modal="true" aria-labelledby="speakerName" aria-hidden="true">
+      <div class="dialogue-inner">
+        <div class="speaker-line">
+          <span id="speakerMark" class="speaker-mark" aria-hidden="true">村</span>
+          <div>
+            <p id="speakerLabel" class="speaker-label">VILLAGER</p>
+            <h2 id="speakerName">瑞金村民</h2>
+          </div>
+        </div>
+        <p id="dialogueMeta" class="dialogue-meta" hidden></p>
+        <p id="dialogueText" class="dialogue-text"></p>
+        <div id="dialogueOptions" class="dialogue-options">
+          <button type="button" data-dialogue-action="continue"><span>›</span>继续</button>
+        </div>
+        <button id="dialogueClose" class="dialogue-close" type="button" aria-label="结束交谈">×</button>
+      </div>
+    </section>
+
+    <section id="historyArchive" class="history-archive" role="dialog" aria-modal="true" aria-labelledby="historyArchiveTitle" aria-hidden="true">
+      <div class="history-archive-backdrop" aria-hidden="true"></div>
+      <aside class="history-archive-panel">
+        <header class="history-archive-header">
+          <p><span aria-hidden="true">档</span> 历史档案</p>
+          <button id="historyArchiveClose" class="history-archive-close" type="button" aria-label="关闭历史档案">×</button>
+        </header>
+        <div id="historyArchiveContent" class="history-archive-content"></div>
+      </aside>
+      <section id="archiveImageViewer" class="archive-image-viewer" role="dialog" aria-modal="true" aria-labelledby="archiveImageViewerCaption" aria-hidden="true">
+        <div class="archive-image-viewer-backdrop" aria-hidden="true"></div>
+        <figure class="archive-image-viewer-frame">
+          <button id="archiveImageViewerClose" class="archive-image-viewer-close" type="button" aria-label="关闭历史图片大图">×</button>
+          <img id="archiveImageViewerImage" alt="">
+          <figcaption id="archiveImageViewerCaption"></figcaption>
+        </figure>
+      </section>
+    </section>
+
+    <section id="chapterFinale" class="chapter-finale" role="dialog" aria-modal="true" aria-labelledby="chapterFinaleTitle" aria-hidden="true">
+      <div class="chapter-finale-backdrop" aria-hidden="true"></div>
+      <article id="chapterFinalePanel" class="chapter-finale-panel">
+        <button id="chapterFinaleClose" class="chapter-finale-close" type="button" aria-label="关闭第一章结尾">×</button>
+        <header class="chapter-finale-header">
+          <p id="chapterFinaleEyebrow">第一章 · 瑞金</p>
+          <h2 id="chapterFinaleTitle">下一步，中央红军该怎么办？</h2>
+        </header>
+        <div id="chapterFinaleContent" class="chapter-finale-content"></div>
+      </article>
+    </section>
+  </main>
+  <script>
+    window.addEventListener("error", function (event) {
+      var message = event.error && event.error.message ? event.error.message : event.message;
+      var status = document.querySelector("#loading p");
+      if (status && message) status.textContent = "场景加载失败：" + message;
+    });
+    window.addEventListener("unhandledrejection", function (event) {
+      var status = document.querySelector("#loading p");
+      if (status) status.textContent = "场景加载失败：" + (event.reason && event.reason.message || event.reason || "未知错误");
+    });
+  </script>
+  <script src="../yudu/assets/vendor/three.min.js"></script>
+<script src="../../courseware/video-color-r152.js"></script>
+  <script src="app.js"></script>
+
+<script>/*[REA] devtools 检测与快捷键屏蔽已移除*/</script>
+</body>
+</html>

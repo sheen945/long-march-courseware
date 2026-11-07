@@ -1,0 +1,428 @@
+{
+  "id": "yudu",
+  "shortTitle": "于都篇",
+  "title": "于都篇：长征第一渡",
+  "caption": "1934 · 江西于都",
+  "theme": "一块木板、一条渡船、一双草鞋，千万人的支持，让红军踏上远征。",
+  "playerIdentity": {
+    "label": "红军战士",
+    "description": "一名即将随部队出发的年轻红军战士"
+  },
+  "startScene": "yudu-woodshop",
+  "progressLabel": "第二章 · 于都",
+  "audio": {
+    "fadeMs": 900,
+    "duckFactor": 0.75,
+    "music": {
+      "source": "assets/yudu/audio/jiangxi-dawn-path.mp3",
+      "volume": 0.16,
+      "loop": true
+    }
+  },
+  "cinematics": {
+    "intro": {
+      "background": "black",
+      "skipLabel": "跳过",
+      "fadeMs": 480,
+      "musicStartScale": 0.38,
+      "musicRestoreMs": 700,
+      "steps": [
+        { "text": "1934年10月，于都。", "durationMs": 2600 },
+        { "text": "中央红军主力陆续集结，一场秘密转移正在准备。", "durationMs": 3000 },
+        { "text": "没有人知道前方有多远，但渡过这条河，便意味着告别故乡，走向未知。", "durationMs": 3400 }
+      ]
+    },
+    "outro": {
+      "background": "transparent",
+      "showSkip": false,
+      "openDelayMs": 0,
+      "cumulative": true,
+      "fadeMs": 480,
+      "endHoldMs": 500,
+      "steps": [
+        { "kind": "title", "emphasis": true, "text": "长征，从这里出发。", "durationMs": 2200 },
+        { "text": "木板、渔船、草鞋和一次次无声的送别，", "durationMs": 2400 },
+        { "text": "汇聚成了红军渡过于都河的力量。", "durationMs": 2400 },
+        { "text": "从这一夜起，他们离开熟悉的故乡，踏上了一条没有人知道终点的道路。", "durationMs": 3000 }
+      ]
+    }
+  },
+  "finale": {
+    "source": "assets/yudu/movie_yudu_finale_short.mp4",
+    "muted": true,
+    "preRollMs": 450,
+    "blackoutFadeMs": 480,
+    "audioFadeOutMs": 500,
+    "freezeLeadMs": 1200,
+    "completeHotspots": ["yudu-night-decision"],
+    "soundtrack": {
+      "source": "assets/yudu/audio/yudu-ending-text.mp3",
+      "volume": 0.9,
+      "loop": false,
+      "fadeInMs": 0,
+      "fadeOutMs": 900
+    }
+  },
+  "mapTransition": {
+    "eyebrow": "长征路线",
+    "title": "于都篇完成",
+    "status": "于都节点已点亮，长征路线继续向前延伸。",
+    "closeLabel": "返回章节",
+    "basePath": "M 150 302 C 260 260 340 260 455 220 C 585 176 700 160 855 105",
+    "completedPath": "M 150 302 C 260 260 340 260 455 220",
+    "nextPath": "M 455 220 C 585 176 700 160 855 105",
+    "nodes": [
+      { "id": "ruijin", "label": "瑞金", "x": 15, "y": 72, "state": "completed" },
+      { "id": "yudu", "label": "于都", "x": 45.5, "y": 52.5, "state": "current" },
+      { "id": "zunyi", "label": "遵义", "x": 85.5, "y": 25, "state": "next" }
+    ]
+  },
+  "panorama": {
+    "arcDegrees": 180,
+    "baseVerticalFovDegrees": 55,
+    "pitchLimitDegrees": 10,
+    "edgeGuardDegrees": 5,
+    "initialYawDegrees": 0
+  },
+  "sceneFiles": [
+    "data/yudu/yudu_scene1.json",
+    "data/yudu/yudu_scene2.json",
+    "data/yudu/yudu_scene3.json",
+    "data/yudu/yudu_scene4.json"
+  ],
+  "scenes": [],
+  "dialogues": {
+    "dialogue-zeng": {
+      "speaker": "曾大爷",
+      "playerSpeaker": "红军战士",
+      "nodes": [
+        {
+          "id": "zeng_01",
+          "speaker": "曾大爷",
+          "text": "这些木板，本来不是用来搭桥的。",
+          "choices": [
+            { "id": "reply-1", "text": "那它们原本是做什么用的？", "next": "zeng_02" }
+          ]
+        },
+        {
+          "id": "zeng_02",
+          "speaker": "曾大爷",
+          "text": "是我早些年给自己备下的寿材。",
+          "choices": [
+            { "id": "reply-2", "text": "这是您留给自己的，为什么还要拿出来？", "next": "zeng_03" }
+          ]
+        },
+        {
+          "id": "zeng_03",
+          "speaker": "曾大爷",
+          "text": "你们要过河。附近能用的木料，已经不多了。",
+          "choices": [
+            { "id": "reply-3", "text": "可这是您为自己准备的东西。", "next": "zeng_04" }
+          ]
+        },
+        {
+          "id": "zeng_04",
+          "speaker": "曾大爷",
+          "text": "木板留在家里，只能等我老去；拿去搭桥，却能让你们平安过河。",
+          "choices": [
+            { "id": "reply-4", "text": "曾大爷，这份心意，我们会记在心里。", "next": "zeng_05" }
+          ]
+        },
+        {
+          "id": "zeng_05",
+          "speaker": "曾大爷",
+          "text": "别记我。记着乡亲们都盼着你们平安。",
+          "choices": [
+            { "id": "reply-5", "text": "我们不会辜负乡亲们。", "settleMs": 500 }
+          ]
+        }
+      ],
+      "onComplete": {
+        "rewards": ["浮桥木板"],
+        "unlockArchives": ["yudu-zeng-board"],
+        "openArchive": "yudu-zeng-board"
+      }
+    },
+    "dialogue-yudu-soldiers": {
+      "speaker": "红军甲",
+      "playerSpeaker": "红军战士",
+      "nodes": [
+        {
+          "id": "soldiers_01",
+          "speaker": "红军甲",
+          "text": "各部队这几天都在频繁调动，命令一项接着一项。",
+          "choices": [
+            { "id": "reply-1", "text": "我们是不是很快就要出发了？", "next": "soldiers_02" }
+          ]
+        },
+        {
+          "id": "soldiers_02",
+          "speaker": "红军乙",
+          "text": "应该快了。但具体时间和方向，还不能随便打听。",
+          "choices": [
+            { "id": "reply-2", "text": "连我们也不能提前知道吗？", "next": "soldiers_03" }
+          ]
+        },
+        {
+          "id": "soldiers_03",
+          "speaker": "红军丙",
+          "text": "敌人的侦察一直没有停。知道的人越少，行动才越安全。",
+          "choices": [
+            { "id": "reply-3", "text": "明白。该知道的时候，命令自然会下来。", "next": "soldiers_04" }
+          ]
+        },
+        {
+          "id": "soldiers_04",
+          "speaker": "红军甲",
+          "text": "趁现在，把行装再检查一遍。上路以后，什么情况都可能遇到。",
+          "choices": [
+            { "id": "reply-4", "text": "我这就去准备。" }
+          ]
+        }
+      ],
+      "onComplete": {
+        "rewards": ["了解更多：军民鱼水情"],
+        "unlockArchives": ["yudu-army-civilian-unity"],
+        "openArchive": "yudu-army-civilian-unity"
+      }
+    },
+    "dialogue-xie-zhijian": {
+      "speaker": "谢志坚",
+      "playerSpeaker": "红军战士",
+      "nodes": [
+        {
+          "id": "xie_01",
+          "speaker": "谢志坚",
+          "text": "这是春秀送给我的。",
+          "choices": [
+            { "id": "reply-1", "text": "春秀是你的家人吗？", "next": "xie_02" }
+          ]
+        },
+        {
+          "id": "xie_02",
+          "speaker": "谢志坚",
+          "text": "是我的未婚妻。她知道我要随部队走，连夜给我编了这双草鞋。",
+          "choices": [
+            { "id": "reply-2", "text": "路上正需要草鞋，你怎么没有穿？", "next": "xie_03" }
+          ]
+        },
+        {
+          "id": "xie_03",
+          "speaker": "谢志坚",
+          "text": "舍不得。这是她亲手做的，我想好好留着。",
+          "choices": [
+            { "id": "reply-3", "text": "她送你草鞋，是希望它陪你平安走下去。", "next": "xie_04" }
+          ]
+        },
+        {
+          "id": "xie_04",
+          "speaker": "谢志坚",
+          "text": "我知道。真到了最难走的时候，我会穿上它。",
+          "choices": [
+            { "id": "reply-4", "text": "把它带好，也把她的牵挂带上。", "next": "xie_05" }
+          ]
+        },
+        {
+          "id": "xie_05",
+          "speaker": "谢志坚",
+          "text": "嗯。等我们回来，我还要穿着它去见她。",
+          "choices": [
+            { "id": "reply-5", "text": "一定会有那一天。" }
+          ]
+        }
+      ],
+      "onComplete": {
+        "rewards": ["绣球草鞋"],
+        "unlockArchives": ["yudu-xie-zhijian-sandals"],
+        "openArchive": "yudu-xie-zhijian-sandals"
+      }
+    },
+    "dialogue-li-shengren": {
+      "speaker": "李声仁",
+      "playerSpeaker": "红军战士",
+      "nodes": [
+        {
+          "id": "li_01",
+          "speaker": "李声仁",
+          "text": "今天河水比平时更急，晚上撑船更要小心。",
+          "choices": [
+            { "id": "reply-1", "text": "李师傅，这样的水势，你还愿意帮我们渡河吗？", "next": "li_02" }
+          ]
+        },
+        {
+          "id": "li_02",
+          "speaker": "李声仁",
+          "text": "怕当然怕。船一歪，整船人都危险。",
+          "choices": [
+            { "id": "reply-2", "text": "那您为什么还是答应了？", "next": "li_03" }
+          ]
+        },
+        {
+          "id": "li_03",
+          "speaker": "李声仁",
+          "text": "因为你们是自己的队伍。你们要过河，我就该把船撑稳。",
+          "choices": [
+            { "id": "reply-3", "text": "今晚就拜托您了。", "next": "li_04" }
+          ]
+        },
+        {
+          "id": "li_04",
+          "speaker": "李声仁",
+          "text": "上船以后都听指挥，别挤，也别突然走动。",
+          "choices": [
+            {
+              "id": "reply-4",
+              "text": "我会提醒大家。",
+              "next": "li_05"
+            }
+          ]
+        },
+        {
+          "id": "li_05",
+          "speaker": "李声仁",
+          "text": "听见了吗？",
+          "choices": [
+            { "id": "A", "text": "像是河面上的风声。" },
+            {
+              "id": "B",
+              "text": "是敌人的侦察机。",
+              "next": "li_06",
+              "onCorrect": {
+                "unlockArchives": ["yudu-danger-before-departure"],
+                "openArchive": "yudu-danger-before-departure"
+              }
+            },
+            { "id": "C", "text": "是远处部队集合的声音。" }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "li_06",
+          "speaker": "李声仁",
+          "text": "对。敌人的眼睛一直盯着这一带，所以渡河必须快，也必须隐蔽。",
+          "choices": [
+            { "id": "reply-6", "text": "我们会服从安排，不让行动暴露。" }
+          ]
+        }
+      ],
+      "onComplete": {
+        "rewards": ["渡河船只"],
+        "unlockArchives": ["yudu-li-shengren"],
+        "openArchive": "yudu-li-shengren"
+      }
+    },
+    "dialogue-goodbye": {
+      "speaker": "老人",
+      "playerSpeaker": "红军战士",
+      "nodes": [
+        {
+          "id": "goodbye_01",
+          "speaker": "老人",
+          "text": "都准备好了吗？",
+          "choices": [
+            { "id": "reply-1", "text": "准备好了，部队很快就要集合。", "next": "goodbye_02" }
+          ]
+        },
+        {
+          "id": "goodbye_02",
+          "speaker": "老人",
+          "text": "这一走，要走多远？",
+          "choices": [
+            {
+              "id": "A",
+              "text": "应该走不了多久，我们很快就回来。",
+              "retryFeedback": {
+                "speaker": "老人",
+                "text": "孩子，别拿没有把握的话安慰我。",
+                "holdMs": 1500
+              }
+            },
+            {
+              "id": "B",
+              "text": "我不知道前面会有多远。",
+              "next": "goodbye_b_followup"
+            },
+            {
+              "id": "C",
+              "text": "我不知道要走多远，但这一步，我们必须走。",
+              "next": "goodbye_03"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "goodbye_b_followup",
+          "speaker": "老人",
+          "text": "你不知道，却还是要走吗？",
+          "choices": [
+            {
+              "id": "reply-b",
+              "text": "是。前面虽然不知道，但我们不能停在这里。",
+              "next": "goodbye_03"
+            }
+          ]
+        },
+        {
+          "id": "goodbye_03",
+          "speaker": "老人",
+          "text": "这一走，也许很久都回不来。",
+          "choices": [
+            { "id": "reply-3", "text": "我知道。可总得有人先迈出这一步。", "next": "goodbye_04" }
+          ]
+        },
+        {
+          "id": "goodbye_04",
+          "speaker": "老人",
+          "text": "那就去吧。乡亲们都盼着你们平安。",
+          "choices": [
+            { "id": "reply-4", "text": "您保重。我们会把乡亲们的心意带上路。", "next": "goodbye_05" }
+          ]
+        },
+        {
+          "id": "goodbye_05",
+          "speaker": "老人",
+          "stageDirection": "远处传来集合口令。",
+          "text": "快去吧，别让队伍等你。",
+          "choices": [
+            { "id": "reply-5", "text": "我走了。", "settleMs": 0 }
+          ]
+        }
+      ],
+      "onComplete": {
+        "openDialogue": "dialogue-night-decision",
+        "openDialogueHotspotId": "yudu-night-decision",
+        "openDialogueDelayMs": 320
+      }
+    },
+    "dialogue-night-decision": {
+      "title": "长征第一渡",
+      "presentation": "crossing-decision",
+      "placement": {
+        "anchor": "bottom-center",
+        "maxWidth": 1120
+      },
+      "speaker": "旁白",
+      "playerSpeaker": "红军战士",
+      "nodes": [
+        {
+          "id": "yudu-crossing-time",
+          "speaker": "旁白",
+          "text": "敌人的侦察仍在继续。为了隐蔽部队行动，必须选择合适的搭桥和渡河时间。",
+          "choices": [
+            { "id": "A", "text": "白天，视野更清楚。" },
+            { "id": "B", "text": "傍晚，人们还没有休息。" },
+            { "id": "C", "text": "入夜以后，借助夜色隐蔽行动。" }
+          ],
+          "correct": "C",
+          "feedbackCorrect": "夜色能够降低大规模行动被敌人发现的风险。搭桥和渡河准备随即开始。",
+          "feedbackHoldMs": 800
+        }
+      ],
+      "onComplete": {
+        "finale": true,
+        "unlockArchives": ["yudu-first-crossing"],
+        "openArchive": "yudu-first-crossing"
+      }
+    }
+  }
+}

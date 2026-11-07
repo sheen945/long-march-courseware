@@ -1,0 +1,80 @@
+:root {
+  color-scheme: dark;
+
+  --lm-color-black: #050606;
+  --lm-color-bg: #10120f;
+  --lm-color-panel: rgba(18, 16, 13, .88);
+  --lm-color-panel-deep: rgba(12, 11, 9, .94);
+  --lm-color-panel-brown: rgba(48, 25, 21, .82);
+  --lm-color-text: #f4ead8;
+  --lm-color-text-soft: #d7c7a8;
+  --lm-color-muted: #a99a7e;
+  --lm-color-gold: #c79d5a;
+  --lm-color-gold-soft: #dfc48c;
+  --lm-color-red: #6f231e;
+  --lm-color-red-soft: rgba(107, 34, 29, .72);
+  --lm-color-success: #9cae76;
+  --lm-color-danger: #b66155;
+  --lm-color-border: rgba(226, 195, 139, .38);
+  --lm-color-border-strong: rgba(226, 195, 139, .62);
+  --lm-color-mask: rgba(4, 4, 3, .72);
+  --lm-color-shadow: rgba(0, 0, 0, .48);
+
+  --lm-font-ui: "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
+  --lm-font-title: "STKaiti", "KaiTi", serif;
+  --lm-font-serif: "FangSong", "STFangsong", "Songti SC", serif;
+  --lm-font-chapter-title: clamp(25px, 2.8vw, 42px);
+  --lm-font-dialogue-name: clamp(24px, 2vw, 28px);
+  --lm-font-dialogue-identity: 18px;
+  --lm-font-dialogue-text: 24px;
+  --lm-font-body: 17px;
+  --lm-font-option: 19px;
+  --lm-font-caption: clamp(20px, 1.65vw, 26px);
+  --lm-font-hint: 11px;
+  --lm-font-tool: 10px;
+  --lm-leading-tight: 1.25;
+  --lm-leading-body: 1.7;
+  --lm-leading-dialogue: 1.58;
+  --lm-leading-cinematic: 1.75;
+
+  --lm-topbar-button: 42px;
+  --lm-topbar-button-mobile: 36px;
+  --lm-topbar-gap: 8px;
+  --lm-topbar-offset: clamp(14px, 2vw, 28px);
+  --lm-dialogue-width: min(68vw, 1040px);
+  --lm-dialogue-min-height: clamp(126px, 18vh, 170px);
+  --lm-choice-width: min(720px, 94vw);
+  --lm-modal-width: min(720px, 94vw);
+  --lm-cinematic-caption-width: min(720px, 84vw);
+  --lm-padding-panel: 26px;
+  --lm-radius-sharp: 2px;
+  --lm-radius-control: 999px;
+  --lm-border-hairline: 1px solid var(--lm-color-border);
+  --lm-border-gold: 1px solid var(--lm-color-border-strong);
+
+  --lm-motion-fast: 160ms;
+  --lm-motion-normal: 220ms;
+  --lm-motion-slow: 500ms;
+  --lm-motion-cinematic: 2000ms;
+
+  --lm-layer-scene: 1;
+  --lm-layer-hotspot: 9;
+  --lm-layer-caption: 20;
+  --lm-layer-progress: 25;
+  --lm-layer-toolbar: 52;
+  --lm-layer-media: 55;
+  --lm-layer-dialogue: 60;
+  --lm-layer-modal: 62;
+  --lm-layer-record: 66;
+  --lm-layer-entry: 70;
+  --lm-layer-texture: 80;
+  --lm-layer-transition: 90;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --lm-font-dialogue-text: 19px;
+    --lm-font-caption: clamp(18px, 5.1vw, 22px);
+    --lm-padding-panel: 18px;
+  }
+}

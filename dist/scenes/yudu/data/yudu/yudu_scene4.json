@@ -1,0 +1,29 @@
+{
+  "id": "yudu-goodbye",
+  "title": "河岸告别 · 最后的回答",
+  "progressTitle": "河岸告别 · 最后的回答",
+  "caption": "第四幕 · 黄昏河岸 · 即将出发",
+  "initialYawDegrees": -18,
+  "image": "assets/yudu/scene/scene4_goodbye_20260724.webp",
+  "dialoguePlacement": {
+    "anchor": "bottom-right",
+    "maxWidth": 1040
+  },
+  "audio": {
+    "music": { "volume": 0.15 },
+    "ambience": null,
+    "video": { "enabled": false }
+  },
+  "requiredHotspots": ["yudu-goodbye-choice"],
+  "entryNotice": "此刻，你是一名即将出发的红军战士。",
+  "hotspots": [
+    {
+      "id": "yudu-goodbye-choice",
+      "kind": "npc",
+      "name": "送别老人",
+      "label": "与老人交谈",
+      "dialogue": "dialogue-goodbye",
+      "bounds": { "left": 0.3, "right": 0.405, "top": 0.31, "bottom": 0.92 }
+    }
+  ]
+}

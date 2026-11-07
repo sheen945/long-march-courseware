@@ -1,0 +1,200 @@
+.lm-chapter-titlecard {
+  position: fixed;
+  z-index: 2147483600;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #eee4cd;
+  background:
+    radial-gradient(circle at 50% 43%, rgba(64, 42, 26, .08), transparent 36%),
+    #020302;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1.15s ease, visibility 1.15s ease;
+}
+
+/* Applied in the static HTML before the deferred title-card script runs. */
+body.lm-titlecard-pending {
+  background: #020302 !important;
+}
+
+body.lm-titlecard-pending > main,
+body.lm-titlecard-pending > #root {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.lm-chapter-titlecard.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.lm-chapter-titlecard__lines {
+  display: grid;
+  justify-items: center;
+  min-width: min(620px, 82vw);
+  text-align: center;
+}
+
+.lm-chapter-titlecard__lines > * {
+  margin: 0;
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(9px);
+  transition: opacity 1s ease, filter 1s ease, transform 1s ease;
+}
+
+.lm-chapter-titlecard__lines > *.revealed {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+.lm-chapter-titlecard__kicker {
+  color: #d7bd86;
+  font: 18px/1.4 "STKaiti", "KaiTi", serif;
+  letter-spacing: .22em;
+}
+
+.lm-chapter-titlecard__title {
+  margin-top: 18px;
+  color: #f3e6cb;
+  font: 500 clamp(38px, 5vw, 66px)/1.25 "STKaiti", "KaiTi", serif;
+  letter-spacing: .12em;
+}
+
+.lm-chapter-titlecard__subtitle {
+  margin-top: 12px;
+  color: #b98b58;
+  font: 400 clamp(20px, 2.2vw, 29px)/1.4 "FangSong", "STFangsong", serif;
+  letter-spacing: .2em;
+}
+
+.lm-chapter-titlecard__time {
+  margin-top: 44px;
+  color: #d8ccb2;
+  font: 17px/1.6 "Noto Serif SC", "Songti SC", serif;
+  letter-spacing: .14em;
+}
+
+.lm-chapter-titlecard__place {
+  margin-top: 5px;
+  color: #a99d83;
+  font: 15px/1.6 "Noto Serif SC", "Songti SC", serif;
+  letter-spacing: .16em;
+}
+
+.lm-chapter-titlecard__action {
+  margin-top: 42px;
+  min-width: 168px;
+  padding: 12px 28px;
+  border: 1px solid rgba(226, 195, 139, .42);
+  border-radius: 999px;
+  color: #f2e4c7;
+  background:
+    linear-gradient(90deg, rgba(82, 42, 32, .14), rgba(20, 16, 12, .62), rgba(82, 42, 32, .14)),
+    rgba(10, 8, 6, .58);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, .36);
+  cursor: pointer;
+  font: 19px/1.2 "STKaiti", "KaiTi", serif;
+  letter-spacing: .16em;
+}
+
+.lm-chapter-titlecard__action:hover,
+.lm-chapter-titlecard__action:focus-visible {
+  color: #fff4d7;
+  border-color: rgba(226, 195, 139, .66);
+  background:
+    linear-gradient(90deg, rgba(118, 55, 40, .18), rgba(36, 25, 17, .72), rgba(118, 55, 40, .18)),
+    rgba(12, 9, 7, .66);
+  outline: none;
+}
+
+.lm-chapter-titlecard__action:active {
+  transform: translateY(1px);
+}
+
+.lm-chapter-titlecard__skip {
+  position: absolute;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  border: 1px solid rgba(214, 181, 116, .26);
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: rgba(238, 228, 205, .72);
+  background: rgba(12, 10, 8, .42);
+  cursor: pointer;
+  font: 12px/1 "Microsoft YaHei UI", sans-serif;
+  letter-spacing: .08em;
+}
+
+.lm-chapter-titlecard__skip:hover,
+.lm-chapter-titlecard__skip:focus-visible {
+  color: #fff4d7;
+  border-color: rgba(226, 195, 139, .54);
+}
+
+body.lm-titlecard-holding-entry #entry,
+body.lm-titlecard-holding-entry #cinematic {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.skip-narration,
+.cinematic-skip,
+.quiet-advance.lm-cinematic-control {
+  position: absolute;
+  z-index: 3;
+  right: max(32px, env(safe-area-inset-right));
+  bottom: max(28px, env(safe-area-inset-bottom));
+  min-width: 88px;
+  padding: 9px 18px;
+  border: 1px solid rgba(226, 195, 139, .34);
+  border-radius: 999px;
+  color: rgba(244, 234, 216, .82);
+  background: rgba(12, 10, 8, .46);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .25);
+  cursor: pointer;
+  font: 500 14px/1.15 "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
+  letter-spacing: .12em;
+  backdrop-filter: blur(8px) saturate(108%);
+  -webkit-backdrop-filter: blur(8px) saturate(108%);
+}
+
+.skip-narration:hover,
+.skip-narration:focus-visible,
+.cinematic-skip:hover,
+.cinematic-skip:focus-visible,
+.quiet-advance.lm-cinematic-control:hover,
+.quiet-advance.lm-cinematic-control:focus-visible {
+  color: #fff4d7;
+  border-color: rgba(226, 195, 139, .58);
+  background: rgba(22, 17, 12, .62);
+  outline: none;
+}
+
+@media (max-width: 720px) {
+  .lm-chapter-titlecard__kicker { font-size: 16px; }
+  .lm-chapter-titlecard__title { font-size: clamp(34px, 12vw, 48px); }
+  .lm-chapter-titlecard__subtitle { font-size: clamp(18px, 6vw, 24px); }
+  .lm-chapter-titlecard__time { margin-top: 34px; font-size: 15px; }
+  .lm-chapter-titlecard__place { font-size: 13px; }
+  .lm-chapter-titlecard__action { margin-top: 34px; min-width: 148px; padding: 11px 24px; font-size: 18px; }
+  .skip-narration,
+  .cinematic-skip,
+  .quiet-advance.lm-cinematic-control {
+    right: max(18px, env(safe-area-inset-right));
+    bottom: max(18px, env(safe-area-inset-bottom));
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lm-chapter-titlecard,
+  .lm-chapter-titlecard * {
+    transition: none !important;
+  }
+}

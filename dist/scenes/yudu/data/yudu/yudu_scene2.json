@@ -1,0 +1,40 @@
+{
+  "id": "yudu-sandals",
+  "title": "民居内部 · 一双草鞋的故事",
+  "progressTitle": "民居内部 · 草鞋的故事",
+  "caption": "第二幕 · 民居内部 · 临行之前",
+  "initialYawDegrees": 20,
+  "image": "assets/yudu/scene/scene2_sandal_20260724.webp",
+  "dialoguePlacement": {
+    "anchor": "bottom-left",
+    "maxWidth": 700,
+    "density": "compact"
+  },
+  "audio": {
+    "music": { "volume": 0.17 },
+    "ambience": null,
+    "video": { "enabled": false }
+  },
+  "requiredHotspots": ["yudu-xie-zhijian"],
+  "entryNotice": "这是一间临行前暂住的普通民居。",
+  "hotspots": [
+    {
+      "id": "yudu-xie-zhijian",
+      "kind": "npc",
+      "name": "谢志坚",
+      "label": "与谢志坚交谈",
+      "dialogue": "dialogue-xie-zhijian",
+      "archive": "yudu-xie-zhijian-sandals",
+      "bounds": { "left": 0.53, "right": 0.68, "top": 0.38, "bottom": 0.93 }
+    },
+    {
+      "id": "sandals-exit",
+      "kind": "continue",
+      "name": "民居出口",
+      "label": "离开房间，前往于都河",
+      "targetScene": "yudu-river",
+      "requires": ["yudu-xie-zhijian"],
+      "bounds": { "left": 0.685, "right": 0.785, "top": 0.2, "bottom": 0.64 }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "civilian": {
+    "speaker": "瑞金村民",
+    "label": "VILLAGER",
+    "mark": "村",
+    "stateKey": "villageCivilianSeen",
+    "lines": [
+      "最近碉堡越修越近，村外的路也不好走了。",
+      "听说前线接连吃紧，大家都在担心苏区还能守多久。"
+    ],
+    "recap": "前线吃紧，村外的碉堡也越来越近了。"
+  },
+  "soldier": {
+    "speaker": "红军战士",
+    "label": "RED ARMY SOLDIER",
+    "mark": "军",
+    "stateKey": "villageSoldierSeen",
+    "lines": [
+      "最近部队调动得很频繁，各处都在传达新的命令。",
+      "杨氏宗祠里正在召开重要会议，大家都在等下一步决定。"
+    ],
+    "recap": "部队正在频繁调动，杨氏宗祠里也在召开重要会议。"
+  },
+  "messenger": {
+    "speaker": "通信员",
+    "label": "MESSENGER",
+    "mark": "信",
+    "stateKey": "messengerSeen",
+    "lines": [
+      "广昌失守，苏区形势越来越严峻。进去听听三人的考虑，判断为什么需要准备战略转移。"
+    ],
+    "recap": "会议还在继续，进去看看吧。"
+  },
+  "meetingCharacters": {
+    "bo-gu": {
+      "characterId": "bo-gu",
+      "speaker": "博古",
+      "label": "情境台词 · 非历史原话",
+      "mark": "博",
+      "identity": "中共中央主要负责人 · 转移筹划中负责政治方面",
+      "keyword": "政治安排",
+      "lines": [
+        "苏区不断缩小，革命力量经不起继续消耗。怎样才能保存主力？"
+      ],
+      "source": "https://www.dswxyjy.org.cn/n1/2024/0626/c427167-40264857.html"
+    },
+    "li-de": {
+      "characterId": "li-de",
+      "speaker": "李德",
+      "label": "情境台词 · 非历史原话",
+      "mark": "李",
+      "identity": "共产国际军事顾问 · 转移筹划中负责军事计划",
+      "keyword": "军事计划",
+      "lines": [
+        "敌军碉堡步步推进，活动空间越来越小。继续固守，主力可能被困住。"
+      ],
+      "source": "https://www.dswxyjy.org.cn/n1/2024/0626/c427167-40264857.html"
+    },
+    "zhou-enlai": {
+      "characterId": "zhou-enlai",
+      "speaker": "周恩来",
+      "label": "情境台词 · 非历史原话",
+      "mark": "周",
+      "identity": "中革军委副主席、红军总政治委员 · 督促军事准备",
+      "keyword": "督促准备",
+      "lines": [
+        "部队伤亡增加，补充又很困难。必须为主力寻找能够继续作战的出路。"
+      ],
+      "source": "https://www.dswxyjy.org.cn/n1/2024/0626/c427167-40264857.html"
+    }
+  },
+  "meetingSummary": {
+    "speaker": "背景梳理",
+    "label": "史实背景 · 筹划情境",
+    "mark": "纪",
+    "stateKey": "meetingSummarySeen",
+    "identity": "1934年5月开始筹划，10月实行战略转移",
+    "keyword": "保存主力",
+    "pages": [
+      "第五次反“围剿”形势日益严峻。\n1934年5月下旬，中共中央开始筹划战略转移。",
+      "转移准备中，博古负责政治方面，李德负责军事计划，周恩来督促军事准备。\n本场景综合这一阶段的分工编写，不是某次会议的逐字记录。"
+    ]
+  }
+}

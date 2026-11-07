@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script data-long-march-memory-storage>
+(function(){function createMemoryStorage(){var values=Object.create(null),keys=[];return{get length(){return keys.length;},key:function(i){i=Number(i);return Number.isInteger(i)&&i>=0&&i<keys.length?keys[i]:null;},getItem:function(k){k=String(k);return Object.prototype.hasOwnProperty.call(values,k)?values[k]:null;},setItem:function(k,v){k=String(k);if(!Object.prototype.hasOwnProperty.call(values,k))keys.push(k);values[k]=String(v);},removeItem:function(k){k=String(k);if(!Object.prototype.hasOwnProperty.call(values,k))return;delete values[k];keys=keys.filter(function(x){return x!==k;});},clear:function(){values=Object.create(null);keys=[];}};}function install(name){try{var current=window[name];void current.length;return;}catch(e){}try{Object.defineProperty(window,name,{configurable:true,enumerable:true,value:createMemoryStorage()});}catch(e){}}install("localStorage");install("sessionStorage");})();
+</script><script>
+(function(){var prefixes=["/api/program-assets/754/"];function needsCors(v){if(!v||typeof v!=="string")return false;try{var href=new URL(v,document.baseURI).href;for(var i=0;i<prefixes.length;i++){var p=new URL(prefixes[i],location.origin).href;if(href.indexOf(p)===0)return true;}return false;}catch(e){return false;}}function mark(img,v){if(needsCors(v)){try{img.crossOrigin="anonymous";}catch(e){}}}var d=Object.getOwnPropertyDescriptor(HTMLImageElement.prototype,"src");if(d&&d.set&&d.get){try{Object.defineProperty(HTMLImageElement.prototype,"src",{get:d.get,set:function(v){mark(this,v);return d.set.call(this,v);},configurable:true,enumerable:d.enumerable});}catch(e){}}var set=Element.prototype.setAttribute;Element.prototype.setAttribute=function(n,v){if(this instanceof HTMLImageElement&&String(n).toLowerCase()==="src")mark(this,String(v||""));return set.apply(this,arguments);};})();
+</script><base href="./">
+<script src="./courseware/website-bridge.js"></script>
+<script src="./courseware/runtime.js"></script>
+<link rel="stylesheet" href="./courseware/classroom.css">
+<script defer src="./courseware/classroom.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>长征史实修订版 · 3D总览</title>
+  <link rel="stylesheet" href="./shared-audio.css">
+  <script src="./shared-audio.js"></script>
+  <link rel="stylesheet" href="./shared-ui/unified-topbar.css">
+  <script defer src="./shared-ui/unified-topbar.js"></script>
+  <script src="./hide-map-overlay-button.js"></script>
+  <script src="./map-stability.js?v=20260902-zoom-stability-2"></script>
+  <script src="./map-node-position-fix.js?v=20260902-node-position-fix-3"></script>
+  <script type="module" crossorigin src="./map-app-loader.js?v=20260902-node-position-fix-3"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Cv5KdO45.css">
+  <link rel="stylesheet" href="./map-stability.css?v=20260902-zoom-stability-2">
+  <link rel="stylesheet" href="./map-node-position-fix.css?v=20260902-node-position-fix-3">
+</head>
+<body><script>/*[REA] 平台锁与授权校验已移除，可本地运行*/</script>
+  <div id="root"></div>
+
+<script>/*[REA] devtools 检测与快捷键屏蔽已移除*/</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "id": "yudu-river",
+  "title": "于都河边 · 渡河前夜",
+  "progressTitle": "于都河边 · 渡河前夜",
+  "caption": "第三幕 · 于都河边 · 渡河前夜",
+  "initialYawDegrees": -40,
+  "video": {
+    "source": "assets/yudu/scene/scene3_river.mp4",
+    "loop": true,
+    "muted": true
+  },
+  "audio": {
+    "music": { "volume": 0.14 },
+    "ambience": {
+      "source": "assets/yudu/audio/river-water.mp3",
+      "volume": 0.045,
+      "loop": true
+    },
+    "effects": [
+      {
+        "id": "enemy-aircraft",
+        "source": "assets/yudu/audio/enemy-aircraft.mp3",
+        "volume": 0.65,
+        "dialogueVolume": 0.5,
+        "fadeInMs": 500,
+        "fadeOutMs": 1000,
+        "loop": true
+      }
+    ],
+    "video": { "enabled": false }
+  },
+  "requiredHotspots": ["yudu-li-shengren"],
+  "entryNotice": "河岸上，船工和群众正为渡河做准备。",
+  "hotspots": [
+    {
+      "id": "yudu-li-shengren",
+      "kind": "npc",
+      "name": "李声仁",
+      "label": "与李声仁交谈",
+      "dialogue": "dialogue-li-shengren",
+      "archive": "yudu-li-shengren",
+      "bounds": { "left": 0.08, "right": 0.25, "top": 0.47, "bottom": 0.65 }
+    },
+    {
+      "id": "river-forward",
+      "kind": "continue",
+      "name": "河岸道路",
+      "label": "前往河岸告别",
+      "targetScene": "yudu-goodbye",
+      "requires": ["yudu-li-shengren"],
+      "bounds": { "left": 0.4, "right": 0.54, "top": 0.28, "bottom": 0.58 }
+    }
+  ]
+}

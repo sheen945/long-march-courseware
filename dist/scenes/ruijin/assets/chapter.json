@@ -1,0 +1,72 @@
+{
+  "id": "ruijin-village",
+  "title": "沙洲坝 · 下霄村",
+  "video": {
+    "source": "assets/video/ruijin-village-4k.mp4",
+    "loop": true,
+    "muted": false,
+    "playsInline": true
+  },
+  "audio": {
+    "source": "assets/audio/ruijin_ambient.mp3",
+    "volume": 0.3
+  },
+  "data": {
+    "hotspots": "assets/data/hotspots.json",
+    "dialogue": "assets/data/dialogue.json",
+    "history": "assets/data/history.json",
+    "archives": "assets/data/archives.json"
+  },
+  "panorama": {
+    "arcDegrees": 180,
+    "baseVerticalFovDegrees": 55,
+    "pitchLimitDegrees": 10,
+    "edgeGuardDegrees": 5,
+    "initialYawDegrees": 6
+  },
+  "transitions": [
+    {
+      "id": "village-to-yang-ancestral-hall",
+      "source": "ruijin-village",
+      "hotspot": "roadToAncestralHall",
+      "pushDurationMs": 1200,
+      "fadeDurationMs": 650,
+      "pushDistance": 1.35,
+      "transitionSound": null,
+      "target": {
+        "id": "yang-ancestral-hall-exterior",
+        "texture": "assets/scenes/yang-ancestral-hall-exterior-4k.webp",
+        "audio": null,
+        "caption": "1934 · 江西瑞金",
+        "title": "下肖村 · 杨氏宗祠外"
+      }
+    },
+    {
+      "id": "yang-ancestral-hall-exterior-to-interior",
+      "source": "yang-ancestral-hall-exterior",
+      "hotspot": "yangHallDoor",
+      "pushDurationMs": 1100,
+      "fadeDurationMs": 700,
+      "pushDistance": 1.15,
+      "transitionSound": null,
+      "target": {
+        "id": "yang-ancestral-hall-interior",
+        "fallbackTexture": "assets/chapter3/planning-video-poster.jpg",
+        "audio": null,
+        "caption": "1934年5月起 · 战略转移筹划情境",
+        "title": "杨氏宗祠 · 筹划情境",
+        "texture": "assets/chapter3/background-fallback.webp",
+        "video": {
+          "source": "assets/chapter3/planning-kling-20261025-pingpong.mp4",
+          "loop": true,
+          "muted": false,
+          "playsInline": true,
+          "playbackMode": "preprocessed-ping-pong"
+        },
+        "panorama": {
+          "mediaAspect": 2.3404255319148937
+        }
+      }
+    }
+  ]
+}

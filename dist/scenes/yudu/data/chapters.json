@@ -1,0 +1,10 @@
+{
+  "chapters": [
+    {
+      "id": "yudu",
+      "shortTitle": "于都篇",
+      "title": "于都篇：长征第一渡",
+      "data": "data/chapter_yudu.json"
+    }
+  ]
+}

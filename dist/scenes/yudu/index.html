@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><script data-long-march-memory-storage>
+(function(){function createMemoryStorage(){var values=Object.create(null),keys=[];return{get length(){return keys.length;},key:function(i){i=Number(i);return Number.isInteger(i)&&i>=0&&i<keys.length?keys[i]:null;},getItem:function(k){k=String(k);return Object.prototype.hasOwnProperty.call(values,k)?values[k]:null;},setItem:function(k,v){k=String(k);if(!Object.prototype.hasOwnProperty.call(values,k))keys.push(k);values[k]=String(v);},removeItem:function(k){k=String(k);if(!Object.prototype.hasOwnProperty.call(values,k))return;delete values[k];keys=keys.filter(function(x){return x!==k;});},clear:function(){values=Object.create(null);keys=[];}};}function install(name){try{var current=window[name];void current.length;return;}catch(e){}try{Object.defineProperty(window,name,{configurable:true,enumerable:true,value:createMemoryStorage()});}catch(e){}}install("localStorage");install("sessionStorage");})();
+</script><script>
+(function(){var prefixes=["/api/program-assets/754/"];function needsCors(v){if(!v||typeof v!=="string")return false;try{var href=new URL(v,document.baseURI).href;for(var i=0;i<prefixes.length;i++){var p=new URL(prefixes[i],location.origin).href;if(href.indexOf(p)===0)return true;}return false;}catch(e){return false;}}function mark(img,v){if(needsCors(v)){try{img.crossOrigin="anonymous";}catch(e){}}}var d=Object.getOwnPropertyDescriptor(HTMLImageElement.prototype,"src");if(d&&d.set&&d.get){try{Object.defineProperty(HTMLImageElement.prototype,"src",{get:d.get,set:function(v){mark(this,v);return d.set.call(this,v);},configurable:true,enumerable:d.enumerable});}catch(e){}}var set=Element.prototype.setAttribute;Element.prototype.setAttribute=function(n,v){if(this instanceof HTMLImageElement&&String(n).toLowerCase()==="src")mark(this,String(v||""));return set.apply(this,arguments);};})();
+</script><base href="./">
+<script src="../../courseware/website-bridge.js"></script>
+<script src="../../courseware/runtime.js"></script>
+<link rel="stylesheet" href="../../courseware/classroom.css">
+<script defer src="../../courseware/classroom.js"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#17150f">
+  <title>长征红色征途 · 历史体验引擎</title>
+  <link rel="stylesheet" href="../../shared-audio.css">
+  <script src="../../shared-audio.js"></script>
+  <link rel="stylesheet" href="../../shared-ui/ui-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../../shared-ui/topbar.css">
+<link rel="stylesheet" href="../../shared-ui/unified-topbar.css?v=20260829-maprestore">
+  <link rel="stylesheet" href="../../shared-ui/chapter-titlecard.css">
+<script src="../../shared-ui/unified-topbar.js?v=20260829-maprestore" defer></script>
+  <script src="../../shared-ui/chapter-titlecard.js" defer></script>
+</head>
+<body class="lm-titlecard-pending"><script>/*[REA] 平台锁与授权校验已移除，可本地运行*/</script>
+  <main id="viewport" class="viewport" aria-label="长征红色征途历史体验场景">
+    <canvas id="panorama" aria-label="按住拖动可转动视角的180度全景"></canvas>
+    <div id="hotspotLayer" class="hotspot-layer" aria-label="场景互动热点"></div>
+    <div class="sun-haze" aria-hidden="true"></div>
+    <div class="cinematic-grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="scene-caption">
+      <p id="sceneMeta"></p>
+      <h1 id="sceneTitle"></h1>
+    </header>
+
+    <nav id="chapterNav" class="chapter-nav" aria-label="章节选择"></nav>
+
+    <section class="chapter-progress" aria-label="章节进度">
+      <button id="progressToggle" class="progress-toggle" type="button" aria-expanded="false">
+        <span id="chapterLabel">章节</span>
+        <strong id="progressCount">探索 0/0</strong>
+        <i aria-hidden="true"></i>
+      </button>
+      <ol id="progressList" class="progress-list"></ol>
+      <button id="archiveLibraryButton" class="archive-library-button ui-control ui-control--panel" type="button" title="历史档案" data-ui-tooltip="历史档案">长征历史档案库</button>
+      <button id="resetButton" class="reset-button ui-control ui-control--panel" type="button" title="重置本章" data-ui-tooltip="重置本章">重置本章</button>
+    </section>
+
+    <section class="controls-hint" aria-label="操作说明">
+      <span><b>按住拖动</b> 转动视角</span><i></i><span><b>发光热点</b> 探索</span>
+    </section>
+
+    <div id="sceneNotice" class="scene-notice" role="status" aria-live="polite"></div>
+    <div id="rewardToast" class="reward-toast" role="status" aria-live="polite"></div>
+    <div id="transitionCurtain" class="transition-curtain" aria-hidden="true"><span></span></div>
+
+    <section id="finalePlayer" class="finale-player" aria-label="于都篇最终电影" aria-hidden="true">
+      <video id="finaleVideo" class="finale-media" muted playsinline></video>
+      <canvas id="finaleFreezeFrame" class="finale-media finale-freeze-frame" hidden></canvas>
+      <p id="finaleError" class="finale-error" role="status"></p>
+    </section>
+
+    <section id="cinematicNarration" class="cinematic-narration" role="dialog" aria-modal="true" aria-live="polite" aria-hidden="true">
+      <div class="cinematic-narration-backdrop" aria-hidden="true"></div>
+      <p id="cinematicCopy" class="cinematic-copy"></p>
+      <button id="cinematicSkip" class="cinematic-skip" type="button">跳过</button>
+    </section>
+
+    <section id="chapterMap" class="chapter-map" role="dialog" aria-modal="true" aria-labelledby="mapTitle" aria-hidden="true">
+      <header class="chapter-map-header">
+        <p id="mapEyebrow">长征路线</p>
+        <h2 id="mapTitle">章节完成</h2>
+      </header>
+      <div id="mapStage" class="map-stage"></div>
+      <p id="mapStatus" class="map-status"></p>
+      <button id="mapClose" class="map-close" type="button">返回章节</button>
+    </section>
+
+    <section id="dialogue" class="dialogue" role="dialog" aria-modal="true" aria-labelledby="speakerName" aria-hidden="true">
+      <div class="dialogue-inner">
+        <div class="speaker-line">
+          <span id="speakerMark" class="speaker-mark" aria-hidden="true">征</span>
+          <div><p id="speakerLabel" class="speaker-label">LONG MARCH</p><h2 id="speakerName">旁白</h2></div>
+        </div>
+        <p id="dialogueText" class="dialogue-text"></p>
+        <div id="dialogueConcepts" class="dialogue-concepts" hidden></div>
+        <div id="dialogueFeedback" class="dialogue-feedback" role="status"></div>
+        <div id="dialogueOptions" class="dialogue-options"></div>
+        <button id="dialogueClose" class="dialogue-close" type="button" aria-label="结束交谈">×</button>
+      </div>
+    </section>
+
+    <section id="archive" class="archive" role="dialog" aria-modal="true" aria-labelledby="archiveTitle" aria-hidden="true">
+      <div id="archiveBackdrop" class="archive-backdrop" aria-hidden="true"></div>
+      <aside class="archive-panel">
+        <header class="archive-header"><p><span aria-hidden="true">档</span> 长征历史档案库</p><button id="archiveClose" type="button" aria-label="关闭历史档案">×</button></header>
+        <div id="archiveContent" class="archive-content"></div>
+      </aside>
+    </section>
+
+    <section id="resumeChoice" class="resume-choice" role="dialog" aria-modal="true" aria-labelledby="resumeChoiceTitle" aria-hidden="true">
+      <article class="resume-choice-panel">
+        <p class="resume-choice-eyebrow">第二章 · 于都</p>
+        <h2 id="resumeChoiceTitle">发现上次学习记录</h2>
+        <p class="resume-choice-text">可以接着上次的场景与任务继续，也可以清空本章记录，从于都河畔重新开始。</p>
+        <div class="resume-choice-actions">
+          <button id="resumeChapterButton" class="resume-choice-button primary" type="button">继续上次</button>
+          <button id="restartChapterButton" class="resume-choice-button" type="button">重新开始</button>
+        </div>
+      </article>
+    </section>
+
+    <div id="loading" class="loading" role="status"><span></span><p>正在载入章节……</p></div>
+  </main>
+  <script src="assets/vendor/three.min.js"></script>
+<script src="../../courseware/video-color-r152.js"></script>
+  <script type="module" src="src/main.js"></script>
+
+<script>/*[REA] devtools 检测与快捷键屏蔽已移除*/</script>
+</body>
+</html>
